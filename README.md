@@ -1,18 +1,29 @@
-# Oroz Eventos
+# NovaWave Studio
 
-Site estático de uma página (HTML/CSS/JS).
+Site estático criado do zero com HTML, CSS e JavaScript puro.
 
-## Como abrir
+## Estrutura
 
-- Abra `index.html` no navegador, ou
-- Rode um servidor local simples (recomendado):
+- `index.html`: estrutura da página e seções
+- `styles.css`: estilo visual responsivo
+- `script.js`: interações (menu mobile e feedback do formulário)
+
+## Como executar
+
+Opção 1: abrir `index.html` diretamente no navegador.
+
+Opção 2 (recomendada): subir um servidor local simples:
 
 ```bash
 python3 -m http.server 5173
 ```
 
-Depois acesse `http://localhost:5173`.
+Depois, acesse:
 
-## Próximo passo
+`http://localhost:5173`
 
-Subir para o GitHub e publicar via GitHub Pages (opcional).
+## Próximos passos sugeridos
+
+- Integrar formulário com backend/API
+- Adicionar projetos reais com imagens
+- Publicar em GitHub Pages ou outro serviço de hospedagem

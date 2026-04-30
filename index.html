@@ -3,186 +3,168 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content="Oroz Eventos — produção e experiências para eventos." />
-    <title>Oroz Eventos</title>
+    <meta
+      name="description"
+      content="NovaWave Studio - criacao de sites modernos, rapidos e focados em conversao."
+    />
+    <title>NovaWave Studio</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+    <a class="skip-link" href="#conteudo">Pular para o conteudo</a>
 
     <header class="header">
       <div class="container header__inner">
-        <div class="brand" aria-label="Oroz Eventos">
-          <span class="brand__dot" aria-hidden="true"></span>
-          <span class="brand__name">Oroz</span>
-          <span class="brand__sub">Eventos</span>
-        </div>
+        <a class="brand" href="#topo" aria-label="Inicio NovaWave Studio">
+          <span class="brand__logo" aria-hidden="true">NW</span>
+          <span class="brand__name">NovaWave Studio</span>
+        </a>
 
-        <nav class="nav" aria-label="Navegação principal">
-          <a href="#servicos">Serviços</a>
-          <a href="#portfolio">Portfólio</a>
+        <button
+          class="menu-toggle"
+          id="menuToggle"
+          type="button"
+          aria-expanded="false"
+          aria-controls="menu"
+          aria-label="Abrir ou fechar menu"
+        >
+          Menu
+        </button>
+
+        <nav class="nav" id="menu" aria-label="Navegacao principal">
+          <a href="#servicos">Servicos</a>
+          <a href="#processo">Processo</a>
+          <a href="#projetos">Projetos</a>
           <a href="#contato">Contato</a>
         </nav>
 
-        <a class="button button--small" href="#contato">Pedir orçamento</a>
+        <a class="button button--small desktop-only" href="#contato">Solicitar proposta</a>
       </div>
     </header>
 
     <main id="conteudo">
-      <section class="hero">
+      <section class="hero" id="topo">
         <div class="container hero__grid">
-          <div class="hero__copy">
-            <p class="kicker">Produção completa de eventos</p>
-            <h1>Eventos memoráveis com execução impecável.</h1>
+          <div>
+            <p class="kicker">Site novo, do zero, com identidade propria</p>
+            <h1>Sua ideia online com design forte e codigo limpo.</h1>
             <p class="lead">
-              Do conceito ao pós-evento: planejamento, produção, fornecedores e operação no dia.
-              Tudo com prazos claros e comunicação direta.
+              Criamos sites institucionais e landing pages com foco em performance, clareza da
+              mensagem e resultado de negocio.
             </p>
-            <div class="hero__cta">
-              <a class="button" href="#contato">Solicitar orçamento</a>
-              <a class="button button--ghost" href="#portfolio">Ver trabalhos</a>
+            <div class="hero__actions">
+              <a class="button" href="#contato">Quero meu site</a>
+              <a class="button button--ghost" href="#projetos">Ver exemplos</a>
             </div>
-
-            <ul class="badges" aria-label="Diferenciais">
-              <li>Planejamento</li>
-              <li>Operação</li>
-              <li>Experiência</li>
+            <ul class="hero__tags" aria-label="Diferenciais">
+              <li>Layout responsivo</li>
+              <li>SEO basico pronto</li>
+              <li>Entrega rapida</li>
             </ul>
           </div>
-
-          <div class="hero__card" role="img" aria-label="Cartão com destaques do evento">
-            <div class="hero__cardTop">
-              <span class="pill">Pronto para 2026</span>
-              <span class="pill pill--muted">Equipe & fornecedores</span>
-            </div>
-            <div class="hero__cardBody">
-              <p class="stat">
-                <span class="stat__value">+50</span>
-                <span class="stat__label">eventos entregues</span>
-              </p>
-              <p class="stat">
-                <span class="stat__value">0</span>
-                <span class="stat__label">improviso (combinado é combinado)</span>
-              </p>
-              <div class="miniList" aria-label="Entregas">
-                <span>Roteiro</span>
-                <span>Cronograma</span>
-                <span>Checklist</span>
-                <span>Equipe</span>
-                <span>Operação</span>
-                <span>Relatório</span>
-              </div>
-            </div>
-          </div>
+          <aside class="hero-card" aria-label="Resumo de entrega">
+            <p class="hero-card__title">Pacote inicial</p>
+            <ul>
+              <li>Pagina principal + secoes completas</li>
+              <li>Formulario funcional com feedback</li>
+              <li>Visual moderno e facil de manter</li>
+            </ul>
+            <p class="hero-card__highlight">100% HTML, CSS e JavaScript puro</p>
+          </aside>
         </div>
       </section>
 
-      <section id="servicos" class="section">
+      <section class="section" id="servicos">
         <div class="container">
           <div class="section__head">
-            <h2>Serviços</h2>
-            <p>Pacotes flexíveis para o tamanho e objetivo do seu evento.</p>
+            <h2>Servicos</h2>
+            <p>O que entregamos para tirar seu projeto do papel.</p>
           </div>
 
           <div class="cards">
             <article class="card">
-              <h3>Produção completa</h3>
-              <p>Planejamento, fornecedores, orçamento, operação e pós-evento.</p>
-              <ul>
-                <li>Cronograma e roteiro</li>
-                <li>Coordenação no dia</li>
-                <li>Gestão de equipe</li>
-              </ul>
+              <h3>Landing Page</h3>
+              <p>Pagina unica para campanhas, lancamentos e captacao de leads.</p>
             </article>
             <article class="card">
-              <h3>Eventos corporativos</h3>
-              <p>Workshops, convenções, ativações, lançamentos e feiras.</p>
-              <ul>
-                <li>Experiência e fluxo</li>
-                <li>Infra e audiovisual</li>
-                <li>Credenciamento</li>
-              </ul>
+              <h3>Site Institucional</h3>
+              <p>Presenca profissional com secoes de empresa, servicos e contato.</p>
             </article>
             <article class="card">
-              <h3>Social & celebrações</h3>
-              <p>Casamentos, aniversários e experiências sob medida.</p>
-              <ul>
-                <li>Curadoria de fornecedores</li>
-                <li>Direção de cerimônia</li>
-                <li>Coordenação de entrega</li>
-              </ul>
+              <h3>Refatoracao Visual</h3>
+              <p>Recriamos seu site atual com nova identidade e melhor experiencia.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="portfolio" class="section section--muted">
+      <section class="section section--alt" id="processo">
         <div class="container">
           <div class="section__head">
-            <h2>Portfólio</h2>
-            <p>Alguns formatos que a gente executa (troque pelos seus cases).</p>
+            <h2>Processo</h2>
+            <p>Fluxo simples para construir com seguranca e previsibilidade.</p>
           </div>
+          <ol class="steps">
+            <li><span>1</span> Alinhamento rapido de objetivo e publico.</li>
+            <li><span>2</span> Proposta visual e estrutura do conteudo.</li>
+            <li><span>3</span> Desenvolvimento, revisao e publicacao.</li>
+          </ol>
+        </div>
+      </section>
 
-          <div class="grid">
-            <article class="tile">
-              <div class="tile__tag">Corporativo</div>
-              <h3>Convenção anual</h3>
-              <p>Palco, pauta, audiovisual e operação com múltiplos pontos.</p>
+      <section class="section" id="projetos">
+        <div class="container">
+          <div class="section__head">
+            <h2>Projetos exemplo</h2>
+            <p>Modelos que podem ser adaptados para seu negocio.</p>
+          </div>
+          <div class="projects">
+            <article class="project">
+              <h3>Clinica Essencial</h3>
+              <p>Site objetivo com foco em agendamento e autoridade local.</p>
             </article>
-            <article class="tile">
-              <div class="tile__tag">Ativação</div>
-              <h3>Marca & experiência</h3>
-              <p>Fluxo de público, staff, montagem e desmontagem.</p>
+            <article class="project">
+              <h3>TechFlow Consultoria</h3>
+              <p>Landing de servicos B2B com destaque para estudos de caso.</p>
             </article>
-            <article class="tile">
-              <div class="tile__tag">Social</div>
-              <h3>Festa com tema</h3>
-              <p>Curadoria, ambientação e direção do evento.</p>
+            <article class="project">
+              <h3>Casa Aurora</h3>
+              <p>Pagina de produto com storytelling e chamada para WhatsApp.</p>
             </article>
           </div>
         </div>
       </section>
 
-      <section id="contato" class="section">
+      <section class="section section--alt" id="contato">
         <div class="container">
           <div class="section__head">
             <h2>Contato</h2>
-            <p>Preencha e eu te retorno com perguntas objetivas e um caminho de orçamento.</p>
+            <p>Envie os dados e receba um retorno com os proximos passos.</p>
           </div>
-
-          <form class="form" id="leadForm">
+          <form class="form" id="contactForm">
             <label>
-              <span>Seu nome</span>
+              <span>Nome</span>
               <input name="name" autocomplete="name" required />
             </label>
-
             <label>
-              <span>WhatsApp</span>
-              <input name="whatsapp" inputmode="tel" autocomplete="tel" required />
+              <span>Email</span>
+              <input type="email" name="email" autocomplete="email" required />
             </label>
-
-            <label>
-              <span>Tipo de evento</span>
-              <select name="type" required>
-                <option value="" selected disabled>Selecione…</option>
-                <option>Corporativo</option>
-                <option>Social</option>
-                <option>Ativação</option>
-                <option>Outro</option>
-              </select>
-            </label>
-
             <label class="form__full">
-              <span>Mensagem</span>
-              <textarea name="message" rows="4" placeholder="Data, cidade, número de pessoas…"></textarea>
+              <span>Resumo do projeto</span>
+              <textarea
+                name="message"
+                rows="4"
+                placeholder="Me conte sobre o site que voce quer criar..."
+                required
+              ></textarea>
             </label>
-
             <div class="form__actions">
               <button class="button" type="submit">Enviar</button>
               <p class="hint" id="formHint" role="status" aria-live="polite"></p>
@@ -194,8 +176,8 @@
 
     <footer class="footer">
       <div class="container footer__inner">
-        <p>© <span id="year"></span> Oroz Eventos. Todos os direitos reservados.</p>
-        <a href="#conteudo">Voltar ao topo</a>
+        <p>© <span id="year"></span> NovaWave Studio. Todos os direitos reservados.</p>
+        <a href="#topo">Voltar ao topo</a>
       </div>
     </footer>
 
