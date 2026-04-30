@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Oroz Eventos — produção e experiências para eventos." />
+    <title>Oroz Eventos</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
+
+    <header class="header">
+      <div class="container header__inner">
+        <div class="brand" aria-label="Oroz Eventos">
+          <span class="brand__dot" aria-hidden="true"></span>
+          <span class="brand__name">Oroz</span>
+          <span class="brand__sub">Eventos</span>
+        </div>
+
+        <nav class="nav" aria-label="Navegação principal">
+          <a href="#servicos">Serviços</a>
+          <a href="#portfolio">Portfólio</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <a class="button button--small" href="#contato">Pedir orçamento</a>
+      </div>
+    </header>
+
+    <main id="conteudo">
+      <section class="hero">
+        <div class="container hero__grid">
+          <div class="hero__copy">
+            <p class="kicker">Produção completa de eventos</p>
+            <h1>Eventos memoráveis com execução impecável.</h1>
+            <p class="lead">
+              Do conceito ao pós-evento: planejamento, produção, fornecedores e operação no dia.
+              Tudo com prazos claros e comunicação direta.
+            </p>
+            <div class="hero__cta">
+              <a class="button" href="#contato">Solicitar orçamento</a>
+              <a class="button button--ghost" href="#portfolio">Ver trabalhos</a>
+            </div>
+
+            <ul class="badges" aria-label="Diferenciais">
+              <li>Planejamento</li>
+              <li>Operação</li>
+              <li>Experiência</li>
+            </ul>
+          </div>
+
+          <div class="hero__card" role="img" aria-label="Cartão com destaques do evento">
+            <div class="hero__cardTop">
+              <span class="pill">Pronto para 2026</span>
+              <span class="pill pill--muted">Equipe & fornecedores</span>
+            </div>
+            <div class="hero__cardBody">
+              <p class="stat">
+                <span class="stat__value">+50</span>
+                <span class="stat__label">eventos entregues</span>
+              </p>
+              <p class="stat">
+                <span class="stat__value">0</span>
+                <span class="stat__label">improviso (combinado é combinado)</span>
+              </p>
+              <div class="miniList" aria-label="Entregas">
+                <span>Roteiro</span>
+                <span>Cronograma</span>
+                <span>Checklist</span>
+                <span>Equipe</span>
+                <span>Operação</span>
+                <span>Relatório</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="servicos" class="section">
+        <div class="container">
+          <div class="section__head">
+            <h2>Serviços</h2>
+            <p>Pacotes flexíveis para o tamanho e objetivo do seu evento.</p>
+          </div>
+
+          <div class="cards">
+            <article class="card">
+              <h3>Produção completa</h3>
+              <p>Planejamento, fornecedores, orçamento, operação e pós-evento.</p>
+              <ul>
+                <li>Cronograma e roteiro</li>
+                <li>Coordenação no dia</li>
+                <li>Gestão de equipe</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Eventos corporativos</h3>
+              <p>Workshops, convenções, ativações, lançamentos e feiras.</p>
+              <ul>
+                <li>Experiência e fluxo</li>
+                <li>Infra e audiovisual</li>
+                <li>Credenciamento</li>
+              </ul>
+            </article>
+            <article class="card">
+              <h3>Social & celebrações</h3>
+              <p>Casamentos, aniversários e experiências sob medida.</p>
+              <ul>
+                <li>Curadoria de fornecedores</li>
+                <li>Direção de cerimônia</li>
+                <li>Coordenação de entrega</li>
+              </ul>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="portfolio" class="section section--muted">
+        <div class="container">
+          <div class="section__head">
+            <h2>Portfólio</h2>
+            <p>Alguns formatos que a gente executa (troque pelos seus cases).</p>
+          </div>
+
+          <div class="grid">
+            <article class="tile">
+              <div class="tile__tag">Corporativo</div>
+              <h3>Convenção anual</h3>
+              <p>Palco, pauta, audiovisual e operação com múltiplos pontos.</p>
+            </article>
+            <article class="tile">
+              <div class="tile__tag">Ativação</div>
+              <h3>Marca & experiência</h3>
+              <p>Fluxo de público, staff, montagem e desmontagem.</p>
+            </article>
+            <article class="tile">
+              <div class="tile__tag">Social</div>
+              <h3>Festa com tema</h3>
+              <p>Curadoria, ambientação e direção do evento.</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section id="contato" class="section">
+        <div class="container">
+          <div class="section__head">
+            <h2>Contato</h2>
+            <p>Preencha e eu te retorno com perguntas objetivas e um caminho de orçamento.</p>
+          </div>
+
+          <form class="form" id="leadForm">
+            <label>
+              <span>Seu nome</span>
+              <input name="name" autocomplete="name" required />
+            </label>
+
+            <label>
+              <span>WhatsApp</span>
+              <input name="whatsapp" inputmode="tel" autocomplete="tel" required />
+            </label>
+
+            <label>
+              <span>Tipo de evento</span>
+              <select name="type" required>
+                <option value="" selected disabled>Selecione…</option>
+                <option>Corporativo</option>
+                <option>Social</option>
+                <option>Ativação</option>
+                <option>Outro</option>
+              </select>
+            </label>
+
+            <label class="form__full">
+              <span>Mensagem</span>
+              <textarea name="message" rows="4" placeholder="Data, cidade, número de pessoas…"></textarea>
+            </label>
+
+            <div class="form__actions">
+              <button class="button" type="submit">Enviar</button>
+              <p class="hint" id="formHint" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>© <span id="year"></span> Oroz Eventos. Todos os direitos reservados.</p>
+        <a href="#conteudo">Voltar ao topo</a>
+      </div>
+    </footer>
+
+    <script src="./script.js"></script>
+  </body>
+</html>
