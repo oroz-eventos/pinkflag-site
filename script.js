@@ -29,14 +29,16 @@ form?.addEventListener("submit", (event) => {
 
   const formData = new FormData(form);
   const name = String(formData.get("name") ?? "").trim();
-  const email = String(formData.get("email") ?? "").trim();
+  const contact = String(formData.get("contact") ?? "").trim();
   const message = String(formData.get("message") ?? "").trim();
 
-  if (!name || !email || !message) {
+  if (!name || !contact || !message) {
     if (hint) hint.textContent = "Preencha todos os campos obrigatorios.";
     return;
   }
 
-  if (hint) hint.textContent = "Mensagem pronta! Em um projeto real, este envio iria para o backend.";
+  if (hint)
+    hint.textContent =
+      "Mensagem pronta! Em um projeto real, este envio iria para o WhatsApp/email ou para um backend.";
   form.reset();
 });
