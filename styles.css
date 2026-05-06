@@ -678,6 +678,7 @@ h3.title2,
   height: 100%;
   display: block;
   object-fit: cover;
+  object-position: center top;
   background: rgba(0, 0, 0, 0.04);
 }
 
@@ -800,6 +801,7 @@ h3.title2,
   height: 100%;
   display: block;
   object-fit: cover;
+  object-position: center top;
   background: rgba(0, 0, 0, 0.04);
 }
 
