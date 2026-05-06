@@ -179,7 +179,7 @@ a {
 }
 
 .brand__logo {
-  height: 44px;
+  height: 36px;
   width: auto;
   object-fit: contain;
   display: block;
@@ -273,8 +273,8 @@ a {
 }
 
 .footer__logo {
-  width: 110px;
-  height: auto;
+  height: 36px;
+  width: auto;
   display: block;
 }
 
