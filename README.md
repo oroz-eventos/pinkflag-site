@@ -43,3 +43,13 @@ Para funcionar, coloque os arquivos exatamente com estes nomes em `assets/fonts/
 - Integrar formulário com backend/API
 - Adicionar projetos reais com imagens
 - Publicar em GitHub Pages ou outro serviço de hospedagem
+
+## Publicar no GitHub Pages
+
+Este repositório inclui um workflow em `.github/workflows/pages.yml` que publica automaticamente o site no GitHub Pages quando houver push/merge na `main`.
+
+Passo a passo para ativar no GitHub:
+
+- Vá em **Settings → Pages**
+- Em **Build and deployment**, selecione **Source: GitHub Actions**
+- Após o próximo merge na `main`, o GitHub mostrará a URL do site nessa mesma tela (e também nos logs do workflow).
