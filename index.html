@@ -218,72 +218,139 @@
               id="catalogo-panel-1"
               aria-labelledby="catalogo-tab-1"
             >
-              <div class="catalogGrid" aria-label="Moda e uniforme principal">
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=F7EEE7&fg=7D1535&text=Blazers"
-                    alt="Editorial de blazers e alfaiataria"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Blazers e alfaiataria</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Camisaria"
-                    alt="Editorial de camisaria"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Camisaria</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=FDF9F6&fg=7D1535&text=Vestidos"
-                    alt="Editorial de calças, saias e vestidos"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Calças, saias e vestidos</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=E1A7B2&fg=7D1535&text=Polos"
-                    alt="Editorial de polos e camisetas"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Polos e camisetas</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=F8F0EA&fg=7D1535&text=Outwear"
-                    alt="Editorial de jaquetas e outwear"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Jaquetas e outwear</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=FBF6F2&fg=7D1535&text=Técnicos"
-                    alt="Editorial de uniformes técnicos e operacionais"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Uniformes técnicos e operacionais</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Medida"
-                    alt="Editorial de desenvolvimentos sob medida"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Desenvolvimentos sob medida</figcaption>
-                </figure>
-                <figure class="catalogTile catalogTile--blank" data-reveal aria-hidden="true"></figure>
-                <figure class="catalogTile catalogTile--blank" data-reveal aria-hidden="true"></figure>
+              <div class="catalogCarousel" aria-label="Moda e uniforme principal">
+                <div class="catalogCarousel__viewport" aria-hidden="true">
+                  <div class="catalogCarousel__track">
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F7EEE7&fg=7D1535&text=Blazers"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Blazers e alfaiataria</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Camisaria"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Camisaria</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=FDF9F6&fg=7D1535&text=Vestidos"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Calças, saias e vestidos</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=E1A7B2&fg=7D1535&text=Polos"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Polos e camisetas</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F8F0EA&fg=7D1535&text=Outwear"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Jaquetas e outwear</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=FBF6F2&fg=7D1535&text=Técnicos"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Uniformes técnicos e operacionais</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Medida"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Desenvolvimentos sob medida</figcaption>
+                    </figure>
+
+                    <!-- Duplicate for seamless loop -->
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F7EEE7&fg=7D1535&text=Blazers"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Blazers e alfaiataria</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Camisaria"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Camisaria</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=FDF9F6&fg=7D1535&text=Vestidos"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Calças, saias e vestidos</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=E1A7B2&fg=7D1535&text=Polos"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Polos e camisetas</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F8F0EA&fg=7D1535&text=Outwear"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Jaquetas e outwear</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=FBF6F2&fg=7D1535&text=Técnicos"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Uniformes técnicos e operacionais</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Medida"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Desenvolvimentos sob medida</figcaption>
+                    </figure>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -295,72 +362,139 @@
               aria-labelledby="catalogo-tab-2"
               hidden
             >
-              <div class="catalogGrid" aria-label="Acessórios e complementos">
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=F7EEE7&fg=7D1535&text=Bolsas"
-                    alt="Editorial de bolsas"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Bolsas</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=FDF9F6&fg=7D1535&text=Mochilas"
-                    alt="Editorial de mochilas"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Mochilas</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Necessaire"
-                    alt="Editorial de necessaires"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Necessaires</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=E1A7B2&fg=7D1535&text=Térmicas"
-                    alt="Editorial de bolsas térmicas e lancheiras térmicas"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Bolsas e lancheiras térmicas</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=FBF6F2&fg=7D1535&text=Bonés"
-                    alt="Editorial de chapéus e bonés"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Chapéus e bonés</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=F8F0EA&fg=7D1535&text=Meias"
-                    alt="Editorial de meias"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Meias (linhas variadas)</figcaption>
-                </figure>
-                <figure class="catalogTile" data-reveal>
-                  <img
-                    src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Cases"
-                    alt="Editorial de cases e complementos"
-                    loading="lazy"
-                    decoding="async"
-                  />
-                  <figcaption>Cases e complementos</figcaption>
-                </figure>
-                <figure class="catalogTile catalogTile--blank" data-reveal aria-hidden="true"></figure>
-                <figure class="catalogTile catalogTile--blank" data-reveal aria-hidden="true"></figure>
+              <div class="catalogCarousel" aria-label="Acessórios e complementos">
+                <div class="catalogCarousel__viewport" aria-hidden="true">
+                  <div class="catalogCarousel__track">
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F7EEE7&fg=7D1535&text=Bolsas"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Bolsas</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=FDF9F6&fg=7D1535&text=Mochilas"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Mochilas</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Necessaire"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Necessaires</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=E1A7B2&fg=7D1535&text=Térmicas"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Bolsas e lancheiras térmicas</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=FBF6F2&fg=7D1535&text=Bonés"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Chapéus e bonés</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F8F0EA&fg=7D1535&text=Meias"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Meias (linhas variadas)</figcaption>
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Bonés"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Bucket hat e viseiras</figcaption>
+                    </figure>
+
+                    <!-- Duplicate for seamless loop -->
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F7EEE7&fg=7D1535&text=Bolsas"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Bolsas</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=FDF9F6&fg=7D1535&text=Mochilas"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Mochilas</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Necessaire"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Necessaires</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=E1A7B2&fg=7D1535&text=Térmicas"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Bolsas e lancheiras térmicas</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=FBF6F2&fg=7D1535&text=Bonés"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Chapéus e bonés</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F8F0EA&fg=7D1535&text=Meias"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Meias (linhas variadas)</figcaption>
+                    </figure>
+                    <figure class="catalogSlide" aria-hidden="true">
+                      <img
+                        src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Bonés"
+                        alt=""
+                        loading="lazy"
+                        decoding="async"
+                      />
+                      <figcaption>Bucket hat e viseiras</figcaption>
+                    </figure>
+                  </div>
+                </div>
               </div>
             </div>
 
