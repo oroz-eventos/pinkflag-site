@@ -1,21 +1,26 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Meias">
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="1100" viewBox="0 0 900 1100" role="img" aria-label="Meias">
   <defs>
-    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stop-color="#b43c64" stop-opacity="0.22"/>
-      <stop offset="1" stop-color="#b43c64" stop-opacity="0.04"/>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b43c64" stop-opacity="0.12" />
+      <stop offset="1" stop-color="#b43c64" stop-opacity="0.03" />
     </linearGradient>
-    <radialGradient id="rg" cx="25%" cy="15%" r="90%">
-      <stop offset="0" stop-color="#ffffff" stop-opacity="0.75"/>
-      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(320 260) rotate(55) scale(820 580)">
+      <stop stop-color="#b43c64" stop-opacity="0.12" />
+      <stop offset="1" stop-color="#b43c64" stop-opacity="0" />
     </radialGradient>
+    <filter id="grain" x="-20%" y="-20%" width="140%" height="140%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" stitchTiles="stitch" />
+      <feColorMatrix type="matrix" values="1 0 0 0 0  1 0 0 0 0  1 0 0 0 0  0 0 0 0.08 0" />
+    </filter>
   </defs>
 
-  <rect width="900" height="1100" fill="url(#g)"/>
-  <rect width="900" height="1100" fill="url(#rg)"/>
+  <rect width="900" height="1100" fill="#fdf9f6" />
+  <rect width="900" height="1100" fill="url(#bg)" />
+  <rect width="900" height="1100" fill="url(#glow)" />
+  <rect width="900" height="1100" filter="url(#grain)" opacity="0.55" />
 
-  <!-- sock icon -->
-  <g transform="translate(0,0)" fill="none" stroke="#7d1535" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
-    <path d="M355 300v260c0 40-26 66-64 92l-96 66c-32 22-51 52-51 86 0 58 47 105 105 105h182c74 0 136-45 168-108l12-24c10-20 10-44 0-64-18-35-54-57-94-57h-74" />
-    <path d="M355 300h265v160H355" />
+  <!-- Bootstrap Icons: layers -->
+  <g transform="translate(450 560) scale(8.0) translate(-8 -8)" fill="#7d1535" fill-opacity="0.7">
+    <path d="M8.235 1.559a.5.5 0 0 0-.47 0l-7.5 4a.5.5 0 0 0 0 .882L3.188 8 .264 9.559a.5.5 0 0 0 0 .882l7.5 4a.5.5 0 0 0 .47 0l7.5-4a.5.5 0 0 0 0-.882L12.813 8l2.922-1.559a.5.5 0 0 0 0-.882zm3.515 7.008L14.438 10 8 13.433 1.562 10 4.25 8.567l3.515 1.874a.5.5 0 0 0 .47 0zM8 9.433 1.562 6 8 2.567 14.438 6z" />
   </g>
 </svg>
