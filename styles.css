@@ -991,6 +991,7 @@ h3.title2,
 }
 
 .catalogCarousel__viewport {
+  position: relative;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -1000,6 +1001,38 @@ h3.title2,
   height: min(80svh, 820px);
   scroll-padding-left: max(var(--gutter), calc((var(--vw) - var(--container)) / 2));
   scrollbar-width: none; /* Firefox */
+}
+
+/* Dica de scroll horizontal no hover (círculo branco + seta rosa) */
+.catalogCarousel__viewport::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  right: max(14px, env(safe-area-inset-right));
+  z-index: 4;
+  width: 48px;
+  height: 48px;
+  margin-top: -24px;
+  border-radius: 50%;
+  background-color: #ffffff;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23b43c64' fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 22px 22px;
+  box-shadow: 0 4px 18px rgba(31, 15, 22, 0.12);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.22s ease;
+}
+
+.catalogCarousel:hover .catalogCarousel__viewport::after {
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .catalogCarousel__viewport::after {
+    display: none;
+  }
 }
 
 .catalogCarousel__viewport::-webkit-scrollbar {
