@@ -33,6 +33,9 @@
   --font-display-weight: 400;
   --font-sans: "Proxima Nova", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
     Arial, sans-serif;
+
+  /* Used for edge fades on horizontal carousels */
+  --page-bg: var(--color-secondary-5);
 }
 
 @font-face {
@@ -552,8 +555,9 @@ h2 {
 .catalogCarousel {
   position: relative;
   border: 1px solid var(--color-line);
-  background: rgba(255, 255, 255, 0.86);
+  background: transparent;
   overflow: hidden;
+  margin-right: calc(50% - 50vw);
 }
 
 .catalogCarousel::before,
@@ -569,12 +573,25 @@ h2 {
 
 .catalogCarousel::before {
   left: 0;
-  background: linear-gradient(90deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0));
+  background: linear-gradient(90deg, var(--page-bg), rgba(255, 255, 255, 0));
 }
 
 .catalogCarousel::after {
   right: 0;
-  background: linear-gradient(270deg, rgba(255, 255, 255, 0.92), rgba(255, 255, 255, 0));
+  background: linear-gradient(270deg, var(--page-bg), rgba(255, 255, 255, 0));
+}
+
+.catalogCarousel__viewport {
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+  scroll-snap-type: x proximity;
+  scrollbar-gutter: stable both-edges;
+}
+
+.catalogCarousel__viewport:focus-visible {
+  outline: 2px solid rgba(180, 60, 100, 0.28);
+  outline-offset: 6px;
 }
 
 .catalogCarousel__track {
@@ -582,36 +599,22 @@ h2 {
   gap: 14px;
   padding: 18px;
   width: max-content;
-  animation: catalog-marquee-right 32s linear infinite;
-}
-
-.catalogCarousel:hover .catalogCarousel__track,
-.catalogCarousel:focus-within .catalogCarousel__track {
-  animation-play-state: paused;
-}
-
-@keyframes catalog-marquee-right {
-  from {
-    transform: translate3d(-50%, 0, 0);
-  }
-  to {
-    transform: translate3d(0, 0, 0);
-  }
 }
 
 .catalogSlide {
   margin: 0;
-  width: clamp(180px, 18vw, 260px);
+  width: clamp(220px, 22vw, 360px);
   flex: 0 0 auto;
   border: 1px solid var(--color-line);
-  background: rgba(255, 255, 255, 0.7);
+  background: transparent;
   overflow: hidden;
+  scroll-snap-align: start;
 }
 
 .catalogSlide img {
   width: 100%;
   display: block;
-  aspect-ratio: 4 / 5;
+  aspect-ratio: 9 / 16;
   object-fit: cover;
   background: rgba(0, 0, 0, 0.04);
 }
