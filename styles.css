@@ -900,27 +900,7 @@ h3.title2,
   background: transparent;
   overflow: hidden;
   margin-right: calc(50% - 50vw);
-}
-
-.catalogCarousel::before,
-.catalogCarousel::after {
-  content: "";
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  width: 72px;
-  pointer-events: none;
-  z-index: 2;
-}
-
-.catalogCarousel::before {
-  left: 0;
-  background: linear-gradient(90deg, var(--page-bg), rgba(255, 255, 255, 0));
-}
-
-.catalogCarousel::after {
-  right: 0;
-  background: linear-gradient(270deg, var(--page-bg), rgba(255, 255, 255, 0));
+  margin-left: calc(50% - 50vw);
 }
 
 .catalogCarousel__viewport {
@@ -943,6 +923,8 @@ h3.title2,
   align-items: stretch;
   gap: 14px;
   padding: 18px;
+  padding-left: max(var(--gutter), calc((100vw - var(--container)) / 2));
+  padding-right: max(var(--gutter), calc((100vw - var(--container)) / 2));
   width: max-content;
   height: 100%;
 }
