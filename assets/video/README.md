@@ -1,15 +1,5 @@
-## Vídeo da Hero (full viewport)
+# Vídeos
 
-Coloque aqui o(s) arquivo(s) do vídeo para a Hero.
-
-Arquivos esperados pelo `index.html`:
-
-- `hero.webm` (recomendado)
-- `hero.mp4` (fallback)
-
-Opcional:
-
-- `hero-poster.jpg` (imagem estática caso o vídeo não carregue)
-
-Depois de adicionar os arquivos, publique normalmente (commit/push) para o Pages atualizar.
-
+Coloque aqui os vídeos do site:
+- hero.mp4
+- editorial.mp4
