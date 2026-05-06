@@ -25,3 +25,30 @@ menuToggle?.addEventListener("click", () => {
 menu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMenu);
 });
+
+const prefersReducedMotion =
+  typeof window !== "undefined" &&
+  window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+if (!prefersReducedMotion) {
+  const revealEls = Array.from(
+    document.querySelectorAll(
+      ".hero, #quem-somos .about__copy, #quem-somos .about__media, #o-que-fazemos .section__head, #o-que-fazemos .gridCard",
+    ),
+  );
+
+  revealEls.forEach((el) => el.classList.add("reveal"));
+
+  const io = new IntersectionObserver(
+    (entries, observer) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        entry.target.classList.add("reveal--in");
+        observer.unobserve(entry.target);
+      });
+    },
+    { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
+  );
+
+  revealEls.forEach((el) => io.observe(el));
+}
