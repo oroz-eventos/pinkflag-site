@@ -459,20 +459,23 @@ h2 {
   max-width: 70ch;
 }
 
-.whatGrid {
+.whatGrid,
+.grid2x2 {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 18px;
 }
 
-.whatCard {
+.whatCard,
+.gridCard {
   border: 1px solid var(--color-line);
   border-radius: var(--radius);
   background: rgba(255, 255, 255, 0.86);
   overflow: hidden;
 }
 
-.whatCard__media {
+.whatCard__media,
+.gridCard__media {
   aspect-ratio: 16 / 10;
   width: 100%;
   object-fit: cover;
@@ -480,18 +483,21 @@ h2 {
   background: rgba(0, 0, 0, 0.04);
 }
 
-.whatCard__body {
+.whatCard__body,
+.gridCard__body {
   padding: 16px 16px 18px;
 }
 
-.whatCard__body h3 {
+.whatCard__body h3,
+.gridCard__body h3 {
   margin: 0 0 10px;
   font-family: var(--font-display);
   font-size: 22px;
   line-height: 1.05;
 }
 
-.whatCard__body p {
+.whatCard__body p,
+.gridCard__body p {
   margin: 0;
   color: var(--color-muted);
   line-height: 1.7;
