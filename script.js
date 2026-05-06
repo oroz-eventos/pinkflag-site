@@ -1,13 +1,6 @@
-const year = document.getElementById("year");
 const header = document.querySelector(".header");
 const menuToggle = document.getElementById("menuToggle");
 const menu = document.getElementById("menu");
-const form = document.getElementById("contactForm");
-const hint = document.getElementById("formHint");
-
-if (year) {
-  year.textContent = String(new Date().getFullYear());
-}
 
 function syncHeaderScrolledState() {
   if (!header) return;
@@ -31,23 +24,4 @@ menuToggle?.addEventListener("click", () => {
 
 menu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMenu);
-});
-
-form?.addEventListener("submit", (event) => {
-  event.preventDefault();
-
-  const formData = new FormData(form);
-  const name = String(formData.get("name") ?? "").trim();
-  const contact = String(formData.get("contact") ?? "").trim();
-  const message = String(formData.get("message") ?? "").trim();
-
-  if (!name || !contact || !message) {
-    if (hint) hint.textContent = "Preencha todos os campos obrigatorios.";
-    return;
-  }
-
-  if (hint)
-    hint.textContent =
-      "Mensagem pronta! Em um projeto real, este envio iria para o WhatsApp/email ou para um backend.";
-  form.reset();
 });
