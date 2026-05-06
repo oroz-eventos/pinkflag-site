@@ -34,12 +34,13 @@
         <nav class="nav" id="menu" aria-label="Navegacao principal">
           <a href="#quem-somos">Quem somos</a>
           <a href="#o-que-fazemos">O que fazemos</a>
+          <a href="#catalogo">Catálogo</a>
         </nav>
       </div>
     </header>
 
     <main id="conteudo">
-      <section class="hero hero--video" id="topo" aria-label="Destaque">
+      <section class="hero hero--video" id="topo" aria-label="Destaque" data-reveal>
         <img
           class="hero__video"
           src="https://placehold.co/1920x1080/png"
@@ -50,7 +51,7 @@
 
       <section class="section section--about" id="quem-somos">
         <div class="container about">
-          <div class="about__copy">
+          <div class="about__copy" data-reveal>
             <p class="eyebrow">Quem somos</p>
             <h2 class="about__title">Uniforme não é padrao. É posicionamento.</h2>
             <div class="about__body">
@@ -73,7 +74,7 @@
             </div>
           </div>
 
-          <figure class="about__media" aria-label="Imagem em destaque">
+          <figure class="about__media" aria-label="Imagem em destaque" data-reveal>
             <img
               src="https://placehold.co/900x1100/png"
               alt=""
@@ -87,7 +88,7 @@
 
       <section class="section" id="o-que-fazemos" aria-label="O que fazemos">
         <div class="container">
-          <div class="section__head section__head--stack">
+          <div class="section__head section__head--stack" data-reveal>
             <h2>O Que Fazemos</h2>
             <p>
               Desenvolvemos uniformes profissionais que traduzem posicionamento em produto. Mais do
@@ -96,7 +97,7 @@
           </div>
 
           <div class="grid2x2">
-            <article class="gridCard">
+            <article class="gridCard" data-reveal>
               <img
                 class="gridCard__media"
                 src="https://placehold.co/900x650/png?bg=F7EEE7&fg=7D1535&text=01"
@@ -113,7 +114,7 @@
               </div>
             </article>
 
-            <article class="gridCard">
+            <article class="gridCard" data-reveal>
               <img
                 class="gridCard__media"
                 src="https://placehold.co/900x650/png?bg=F0CBCE&fg=7D1535&text=02"
@@ -130,7 +131,7 @@
               </div>
             </article>
 
-            <article class="gridCard">
+            <article class="gridCard" data-reveal>
               <img
                 class="gridCard__media"
                 src="https://placehold.co/900x650/png?bg=E1A7B2&fg=7D1535&text=03"
@@ -147,7 +148,7 @@
               </div>
             </article>
 
-            <article class="gridCard">
+            <article class="gridCard" data-reveal>
               <img
                 class="gridCard__media"
                 src="https://placehold.co/900x650/png?bg=FDF9F6&fg=7D1535&text=04"
@@ -163,6 +164,236 @@
                 </p>
               </div>
             </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="catalogo" aria-label="Catálogo de Produtos">
+        <div class="container">
+          <div class="section__head section__head--stack" data-reveal>
+            <p class="eyebrow">Catálogo de Produtos</p>
+            <h2>Versatilidade com consistência de marca</h2>
+          </div>
+
+          <div class="catalogTabs" data-tabs>
+            <div class="catalogTabs__list" role="tablist" aria-label="Categorias do catálogo" data-reveal>
+              <button
+                class="catalogTabs__tab"
+                type="button"
+                role="tab"
+                aria-selected="true"
+                aria-controls="catalogo-panel-1"
+                id="catalogo-tab-1"
+              >
+                Moda e uniforme principal
+              </button>
+              <button
+                class="catalogTabs__tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="catalogo-panel-2"
+                id="catalogo-tab-2"
+                tabindex="-1"
+              >
+                Acessórios e complementos
+              </button>
+              <button
+                class="catalogTabs__tab"
+                type="button"
+                role="tab"
+                aria-selected="false"
+                aria-controls="catalogo-panel-3"
+                id="catalogo-tab-3"
+                tabindex="-1"
+              >
+                Apoio
+              </button>
+            </div>
+
+            <div
+              class="catalogTabs__panel"
+              role="tabpanel"
+              tabindex="0"
+              id="catalogo-panel-1"
+              aria-labelledby="catalogo-tab-1"
+            >
+              <div class="catalogGrid" aria-label="Moda e uniforme principal">
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=F7EEE7&fg=7D1535&text=Blazers"
+                    alt="Editorial de blazers e alfaiataria"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Blazers e alfaiataria</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Camisaria"
+                    alt="Editorial de camisaria"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Camisaria</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=FDF9F6&fg=7D1535&text=Vestidos"
+                    alt="Editorial de calças, saias e vestidos"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Calças, saias e vestidos</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=E1A7B2&fg=7D1535&text=Polos"
+                    alt="Editorial de polos e camisetas"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Polos e camisetas</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=F8F0EA&fg=7D1535&text=Outwear"
+                    alt="Editorial de jaquetas e outwear"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Jaquetas e outwear</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=FBF6F2&fg=7D1535&text=Técnicos"
+                    alt="Editorial de uniformes técnicos e operacionais"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Uniformes técnicos e operacionais</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Medida"
+                    alt="Editorial de desenvolvimentos sob medida"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Desenvolvimentos sob medida</figcaption>
+                </figure>
+                <figure class="catalogTile catalogTile--blank" data-reveal aria-hidden="true"></figure>
+                <figure class="catalogTile catalogTile--blank" data-reveal aria-hidden="true"></figure>
+              </div>
+            </div>
+
+            <div
+              class="catalogTabs__panel"
+              role="tabpanel"
+              tabindex="0"
+              id="catalogo-panel-2"
+              aria-labelledby="catalogo-tab-2"
+              hidden
+            >
+              <div class="catalogGrid" aria-label="Acessórios e complementos">
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=F7EEE7&fg=7D1535&text=Bolsas"
+                    alt="Editorial de bolsas"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Bolsas</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=FDF9F6&fg=7D1535&text=Mochilas"
+                    alt="Editorial de mochilas"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Mochilas</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Necessaire"
+                    alt="Editorial de necessaires"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Necessaires</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=E1A7B2&fg=7D1535&text=Térmicas"
+                    alt="Editorial de bolsas térmicas e lancheiras térmicas"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Bolsas e lancheiras térmicas</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=FBF6F2&fg=7D1535&text=Bonés"
+                    alt="Editorial de chapéus e bonés"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Chapéus e bonés</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=F8F0EA&fg=7D1535&text=Meias"
+                    alt="Editorial de meias"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Meias (linhas variadas)</figcaption>
+                </figure>
+                <figure class="catalogTile" data-reveal>
+                  <img
+                    src="https://placehold.co/900x1100/png?bg=F0CBCE&fg=7D1535&text=Cases"
+                    alt="Editorial de cases e complementos"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                  <figcaption>Cases e complementos</figcaption>
+                </figure>
+                <figure class="catalogTile catalogTile--blank" data-reveal aria-hidden="true"></figure>
+                <figure class="catalogTile catalogTile--blank" data-reveal aria-hidden="true"></figure>
+              </div>
+            </div>
+
+            <div
+              class="catalogTabs__panel"
+              role="tabpanel"
+              tabindex="0"
+              id="catalogo-panel-3"
+              aria-labelledby="catalogo-tab-3"
+              hidden
+            >
+              <div class="catalogSupport">
+                <div class="catalogSupport__copy" data-reveal>
+                  <p>
+                    Do corporativo ao operacional, cada produto é desenvolvido com o mesmo rigor de
+                    design, funcionalidade e alinhamento à identidade da marca.
+                  </p>
+                  <p>
+                    Atendemos diferentes segmentos com o mesmo princípio: qualidade, coerência estética
+                    e adaptação ao contexto de uso.
+                  </p>
+                </div>
+                <figure class="catalogSupport__media" data-reveal aria-label="Imagem editorial de apoio">
+                  <img
+                    src="https://placehold.co/1200x900/png?bg=F7EEE7&fg=7D1535&text=Apoio"
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </figure>
+              </div>
+            </div>
           </div>
         </div>
       </section>

@@ -26,16 +26,59 @@ menu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMenu);
 });
 
+function initTabs(root) {
+  const tablist = root.querySelector('[role="tablist"]');
+  if (!tablist) return;
+
+  const tabs = Array.from(tablist.querySelectorAll('[role="tab"]'));
+  const panels = Array.from(root.querySelectorAll('[role="tabpanel"]'));
+  if (!tabs.length || !panels.length) return;
+
+  function setActive(nextId, { focus = false } = {}) {
+    tabs.forEach((tab) => {
+      const isActive = tab.getAttribute("aria-controls") === nextId;
+      tab.setAttribute("aria-selected", String(isActive));
+      tab.tabIndex = isActive ? 0 : -1;
+      if (isActive && focus) tab.focus();
+    });
+
+    panels.forEach((panel) => {
+      panel.hidden = panel.id !== nextId;
+    });
+  }
+
+  tablist.addEventListener("click", (e) => {
+    const target = e.target.closest?.('[role="tab"]');
+    if (!target) return;
+    const nextId = target.getAttribute("aria-controls");
+    if (!nextId) return;
+    setActive(nextId);
+  });
+
+  tablist.addEventListener("keydown", (e) => {
+    const currentIdx = tabs.findIndex((t) => t.getAttribute("aria-selected") === "true");
+    if (currentIdx < 0) return;
+
+    if (e.key === "ArrowRight" || e.key === "ArrowLeft") {
+      e.preventDefault();
+      const dir = e.key === "ArrowRight" ? 1 : -1;
+      const next = (currentIdx + dir + tabs.length) % tabs.length;
+      const nextId = tabs[next]?.getAttribute("aria-controls");
+      if (nextId) setActive(nextId, { focus: true });
+    }
+  });
+
+  const initiallySelected = tabs.find((t) => t.getAttribute("aria-selected") === "true");
+  const initialPanelId = initiallySelected?.getAttribute("aria-controls") ?? panels[0]?.id;
+  if (initialPanelId) setActive(initialPanelId);
+}
+
 const prefersReducedMotion =
   typeof window !== "undefined" &&
   window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
 
 if (!prefersReducedMotion) {
-  const revealEls = Array.from(
-    document.querySelectorAll(
-      ".hero, #quem-somos .about__copy, #quem-somos .about__media, #o-que-fazemos .section__head, #o-que-fazemos .gridCard",
-    ),
-  );
+  const revealEls = Array.from(document.querySelectorAll("[data-reveal]"));
 
   revealEls.forEach((el) => el.classList.add("reveal"));
 
@@ -52,3 +95,5 @@ if (!prefersReducedMotion) {
 
   revealEls.forEach((el) => io.observe(el));
 }
+
+document.querySelectorAll("[data-tabs]").forEach((root) => initTabs(root));
