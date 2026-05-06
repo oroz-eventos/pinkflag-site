@@ -6,6 +6,9 @@
   --color-primary-4: #e1a7b2;
   --color-primary-5: #f0cbce;
 
+  /* Accent (highlight blocks) */
+  --color-accent: #7d1535;
+
   --color-secondary: #f7eee7;
   --color-secondary-2: #f8f0ea;
   --color-secondary-3: #faf3ee;
@@ -292,9 +295,17 @@ h1 {
 
 .hero-card__highlight {
   margin: 16px 0 0;
-  border-top: 1px solid var(--color-line);
+  border-top: 1px solid rgba(125, 21, 53, 0.35);
   padding-top: 14px;
   font-weight: 800;
+  color: var(--color-accent);
+}
+
+/* Utility: accent-highlight blocks */
+.accent-block {
+  border: 1px solid rgba(125, 21, 53, 0.28);
+  background: linear-gradient(180deg, rgba(125, 21, 53, 0.08), rgba(255, 255, 255, 0.55));
+  box-shadow: var(--shadow);
 }
 
 .section {
