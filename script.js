@@ -1,4 +1,5 @@
 const year = document.getElementById("year");
+const header = document.querySelector(".header");
 const menuToggle = document.getElementById("menuToggle");
 const menu = document.getElementById("menu");
 const form = document.getElementById("contactForm");
@@ -7,6 +8,14 @@ const hint = document.getElementById("formHint");
 if (year) {
   year.textContent = String(new Date().getFullYear());
 }
+
+function syncHeaderScrolledState() {
+  if (!header) return;
+  header.classList.toggle("is-scrolled", window.scrollY > 0);
+}
+
+syncHeaderScrolledState();
+window.addEventListener("scroll", syncHeaderScrolledState, { passive: true });
 
 function closeMenu() {
   if (!menu || !menuToggle) return;
