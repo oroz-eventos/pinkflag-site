@@ -510,7 +510,7 @@ h1 {
 /* About-style sections (Quem somos / Apoio) */
 .section--about .about {
   position: relative;
-  align-items: center;
+  align-items: stretch;
   grid-template-columns: 1fr 1fr;
   gap: 56px;
   padding: 0;
@@ -521,6 +521,16 @@ h1 {
 .section--about .about__copy {
   max-width: 70ch;
   padding: clamp(28px, 4.2vw, 56px);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.section--about .about__media {
+  margin: 0;
+  height: 100%;
+  align-self: stretch;
+  display: block;
 }
 
 .about {
