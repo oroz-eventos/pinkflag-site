@@ -88,11 +88,9 @@ if (!prefersReducedMotion) {
   revealEls.forEach((el) => el.classList.add("reveal"));
 
   const io = new IntersectionObserver(
-    (entries, observer) => {
+    (entries) => {
       entries.forEach((entry) => {
-        if (!entry.isIntersecting) return;
-        entry.target.classList.add("reveal--in");
-        observer.unobserve(entry.target);
+        entry.target.classList.toggle("reveal--in", entry.isIntersecting);
       });
     },
     { threshold: 0.15, rootMargin: "0px 0px -10% 0px" },
