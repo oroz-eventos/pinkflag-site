@@ -925,6 +925,11 @@ h3.title2,
   height: min(80vh, 820px);
   height: min(80svh, 820px);
   scroll-padding-left: max(var(--gutter), calc((var(--vw) - var(--container)) / 2));
+  scrollbar-width: none; /* Firefox */
+}
+
+.catalogCarousel__viewport::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
 }
 
 .catalogCarousel__viewport:focus-visible {
