@@ -41,6 +41,15 @@
 
   /* Used for edge fades on horizontal carousels */
   --page-bg: var(--color-secondary-5);
+
+  /* Viewport width helper (avoid scrollbar misalignment) */
+  --vw: 100vw;
+}
+
+@supports (width: 100dvw) {
+  :root {
+    --vw: 100dvw;
+  }
 }
 
 @font-face {
@@ -903,8 +912,8 @@ h3.title2,
   position: relative;
   background: transparent;
   overflow: hidden;
-  margin-right: calc(50% - 50vw);
-  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - (var(--vw) / 2));
+  margin-left: calc(50% - (var(--vw) / 2));
 }
 
 .catalogCarousel__viewport {
@@ -915,6 +924,7 @@ h3.title2,
   scrollbar-gutter: stable both-edges;
   height: min(80vh, 820px);
   height: min(80svh, 820px);
+  scroll-padding-left: max(var(--gutter), calc((var(--vw) - var(--container)) / 2));
 }
 
 .catalogCarousel__viewport:focus-visible {
@@ -927,8 +937,8 @@ h3.title2,
   align-items: stretch;
   gap: 14px;
   padding: 18px;
-  padding-left: max(var(--gutter), calc((100vw - var(--container)) / 2));
-  padding-right: max(var(--gutter), calc((100vw - var(--container)) / 2));
+  padding-left: max(var(--gutter), calc((var(--vw) - var(--container)) / 2));
+  padding-right: max(var(--gutter), calc((var(--vw) - var(--container)) / 2));
   width: max-content;
   height: 100%;
 }
