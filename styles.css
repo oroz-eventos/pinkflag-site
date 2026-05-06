@@ -469,7 +469,12 @@ h2 {
 
 .title1 {
   font-size: 40px;
-  line-height: 1;
+  line-height: 1.05;
+}
+
+.title2 {
+  font-size: 26px;
+  line-height: 1.1;
 }
 
 .section__head p {
