@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 1100" role="img" aria-label="Meias">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#b43c64" stop-opacity="0.22"/>
+      <stop offset="1" stop-color="#b43c64" stop-opacity="0.04"/>
+    </linearGradient>
+    <radialGradient id="rg" cx="25%" cy="15%" r="90%">
+      <stop offset="0" stop-color="#ffffff" stop-opacity="0.75"/>
+      <stop offset="1" stop-color="#ffffff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <rect width="900" height="1100" fill="url(#g)"/>
+  <rect width="900" height="1100" fill="url(#rg)"/>
+
+  <!-- sock icon -->
+  <g transform="translate(0,0)" fill="none" stroke="#7d1535" stroke-width="20" stroke-linecap="round" stroke-linejoin="round" opacity="0.95">
+    <path d="M355 300v260c0 40-26 66-64 92l-96 66c-32 22-51 52-51 86 0 58 47 105 105 105h182c74 0 136-45 168-108l12-24c10-20 10-44 0-64-18-35-54-57-94-57h-74" />
+    <path d="M355 300h265v160H355" />
+  </g>
+</svg>
