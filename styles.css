@@ -642,7 +642,7 @@ h3.title2,
 .sectionBreak__media {
   margin: 0;
   width: 100%;
-  aspect-ratio: 1920 / 840;
+  aspect-ratio: 1920 / 1080;
   height: auto;
   max-height: 80vh;
   max-height: 80svh;
@@ -651,7 +651,8 @@ h3.title2,
   margin-left: calc(50% - 50vw);
 }
 
-.sectionBreak__media img {
+.sectionBreak__media img,
+.sectionBreak__media video {
   width: 100%;
   height: 100%;
   display: block;
