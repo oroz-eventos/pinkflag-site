@@ -407,8 +407,7 @@ h1 {
 
 .about h2 {
   margin: 0 0 16px;
-  font-size: var(--title-size);
-  line-height: var(--title-line-height);
+  line-height: 1;
 }
 
 .about__body {
@@ -467,12 +466,25 @@ h2 {
   font-size: clamp(24px, 3.2vw, 34px);
 }
 
-.title1 {
+.title1,
+h2.title1 {
+  font-size: 40px;
+  line-height: 1.05;
+}
+
+.about h2.title1,
+.contact__copy h2.title1 {
   font-size: 40px;
   line-height: 1.05;
 }
 
 .title2 {
+  font-size: 26px;
+  line-height: 1.1;
+}
+
+h3.title2,
+.gridCard__body h3.title2 {
   font-size: 26px;
   line-height: 1.1;
 }
@@ -583,7 +595,6 @@ h2 {
 }
 
 .contact__copy h2 {
-  font-size: clamp(28px, 3.6vw, 44px);
   line-height: 1;
 }
 
