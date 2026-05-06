@@ -605,14 +605,21 @@ h2 {
   width: clamp(220px, 22vw, 360px);
   flex: 0 0 auto;
   background: transparent;
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
+  position: relative;
   scroll-snap-align: start;
 }
 
 .catalogSlide figcaption {
-  order: -1;
+  position: absolute;
+  left: 14px;
+  bottom: 14px;
+  z-index: 1;
+  padding: 0;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(42, 21, 32, 0.84);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.65);
 }
 
 .catalogSlide img {
@@ -621,14 +628,6 @@ h2 {
   aspect-ratio: 9 / 16;
   object-fit: cover;
   background: rgba(0, 0, 0, 0.04);
-}
-
-.catalogSlide figcaption {
-  padding: 2px;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: var(--color-muted);
 }
 
 .catalogSupport {
