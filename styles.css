@@ -704,6 +704,10 @@ h3.title2,
   line-height: 1.7;
 }
 
+.contact__copy .button {
+  margin-top: 24px;
+}
+
 .contact__actions {
   margin-top: 18px;
 }
