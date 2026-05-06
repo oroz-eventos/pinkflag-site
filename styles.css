@@ -179,8 +179,8 @@ a {
 }
 
 .brand__logo {
-  width: 34px;
-  height: 34px;
+  height: 44px;
+  width: auto;
   object-fit: contain;
   display: block;
 }
