@@ -687,7 +687,7 @@ h3.title2,
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(180, 60, 100, 0.6);
+  background: rgba(180, 60, 100, 0.8);
   pointer-events: none;
 }
 
@@ -734,8 +734,12 @@ h3.title2,
 
 .contact__copy p {
   margin: 12px 0 0;
-  color: var(--color-muted);
+  color: rgba(255, 255, 255, 0.9);
   line-height: 1.7;
+}
+
+.contact__copy h2 {
+  color: #ffffff;
 }
 
 .contact__copy .button {
