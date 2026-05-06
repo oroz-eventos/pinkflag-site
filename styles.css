@@ -746,6 +746,16 @@ h3.title2,
   margin-top: 24px;
 }
 
+.contact__copy .button {
+  background: var(--color-accent);
+  border-color: var(--color-accent);
+}
+
+.contact__copy .button:hover {
+  background: color-mix(in srgb, var(--color-accent), #ffffff 10%);
+  border-color: color-mix(in srgb, var(--color-accent), #ffffff 10%);
+}
+
 .contact__actions {
   margin-top: 18px;
 }
