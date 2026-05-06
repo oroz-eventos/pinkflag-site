@@ -52,6 +52,7 @@ function initTabs(root) {
     if (!target) return;
     const nextId = target.getAttribute("aria-controls");
     if (!nextId) return;
+    if (!panels.some((p) => p.id === nextId)) return;
     setActive(nextId);
   });
 
@@ -64,12 +65,16 @@ function initTabs(root) {
       const dir = e.key === "ArrowRight" ? 1 : -1;
       const next = (currentIdx + dir + tabs.length) % tabs.length;
       const nextId = tabs[next]?.getAttribute("aria-controls");
-      if (nextId) setActive(nextId, { focus: true });
+      if (nextId && panels.some((p) => p.id === nextId)) setActive(nextId, { focus: true });
     }
   });
 
   const initiallySelected = tabs.find((t) => t.getAttribute("aria-selected") === "true");
-  const initialPanelId = initiallySelected?.getAttribute("aria-controls") ?? panels[0]?.id;
+  const initialPanelId =
+    (initiallySelected?.getAttribute("aria-controls") &&
+      panels.some((p) => p.id === initiallySelected.getAttribute("aria-controls")) &&
+      initiallySelected.getAttribute("aria-controls")) ||
+    panels[0]?.id;
   if (initialPanelId) setActive(initialPanelId);
 }
 
