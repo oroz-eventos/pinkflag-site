@@ -377,6 +377,7 @@ a {
   padding: 0;
   min-height: 100vh;
   min-height: 100svh;
+  margin-bottom: 112px;
 }
 
 .hero__video {
@@ -495,7 +496,7 @@ h1 {
 }
 
 .section {
-  padding: 84px 0;
+  padding: 112px 0;
   scroll-margin-top: 92px;
 }
 
