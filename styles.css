@@ -437,6 +437,66 @@ h2 {
   color: var(--color-muted);
 }
 
+/* O que fazemos (2x2 grid) */
+.what {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 26px;
+  align-items: start;
+  margin-bottom: 26px;
+}
+
+.what__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.6vw, 54px);
+  line-height: 1;
+}
+
+.what__lead {
+  margin: 10px 0 0;
+  color: var(--color-muted);
+  max-width: 70ch;
+}
+
+.whatGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.whatCard {
+  border: 1px solid var(--color-line);
+  border-radius: var(--radius);
+  background: rgba(255, 255, 255, 0.86);
+  overflow: hidden;
+}
+
+.whatCard__media {
+  aspect-ratio: 16 / 10;
+  width: 100%;
+  object-fit: cover;
+  display: block;
+  background: rgba(0, 0, 0, 0.04);
+}
+
+.whatCard__body {
+  padding: 16px 16px 18px;
+}
+
+.whatCard__body h3 {
+  margin: 0 0 10px;
+  font-family: var(--font-display);
+  font-size: 22px;
+  line-height: 1.05;
+}
+
+.whatCard__body p {
+  margin: 0;
+  color: var(--color-muted);
+  line-height: 1.7;
+}
+
 .catalog,
 .timeline,
 .projects {
@@ -698,6 +758,14 @@ textarea:focus {
   .section__head {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  .what {
+    grid-template-columns: 1fr;
+  }
+
+  .whatGrid {
+    grid-template-columns: 1fr;
   }
 
   .hero__meta {
