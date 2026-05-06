@@ -1,50 +1,42 @@
-const form = document.getElementById("leadForm");
+const year = document.getElementById("year");
+const menuToggle = document.getElementById("menuToggle");
+const menu = document.getElementById("menu");
+const form = document.getElementById("contactForm");
 const hint = document.getElementById("formHint");
 
-document.getElementById("year").textContent = String(new Date().getFullYear());
-
-function normalizeDigits(value) {
-  return String(value ?? "").replace(/\D/g, "");
+if (year) {
+  year.textContent = String(new Date().getFullYear());
 }
 
-function buildWhatsAppLink({ name, whatsapp, type, message }) {
-  const phone = normalizeDigits(whatsapp);
-
-  const lines = [
-    "Olá! Quero um orçamento com a Oroz Eventos.",
-    "",
-    `Nome: ${name}`,
-    `Tipo de evento: ${type}`,
-    message ? `Mensagem: ${message}` : null,
-  ].filter(Boolean);
-
-  const text = encodeURIComponent(lines.join("\n"));
-  return { phone, url: `https://wa.me/${phone}?text=${text}` };
+function closeMenu() {
+  if (!menu || !menuToggle) return;
+  menu.classList.remove("is-open");
+  menuToggle.setAttribute("aria-expanded", "false");
 }
 
-form?.addEventListener("submit", (e) => {
-  e.preventDefault();
+menuToggle?.addEventListener("click", () => {
+  if (!menu || !menuToggle) return;
+  const isOpen = menu.classList.toggle("is-open");
+  menuToggle.setAttribute("aria-expanded", String(isOpen));
+});
 
-  const data = new FormData(form);
-  const name = String(data.get("name") ?? "").trim();
-  const whatsapp = String(data.get("whatsapp") ?? "").trim();
-  const type = String(data.get("type") ?? "").trim();
-  const message = String(data.get("message") ?? "").trim();
+menu?.querySelectorAll("a").forEach((link) => {
+  link.addEventListener("click", closeMenu);
+});
 
-  if (!name || !whatsapp || !type) {
-    if (hint) hint.textContent = "Preencha nome, WhatsApp e tipo de evento.";
+form?.addEventListener("submit", (event) => {
+  event.preventDefault();
+
+  const formData = new FormData(form);
+  const name = String(formData.get("name") ?? "").trim();
+  const email = String(formData.get("email") ?? "").trim();
+  const message = String(formData.get("message") ?? "").trim();
+
+  if (!name || !email || !message) {
+    if (hint) hint.textContent = "Preencha todos os campos obrigatorios.";
     return;
   }
 
-  const { phone, url } = buildWhatsAppLink({ name, whatsapp, type, message });
-
-  if (phone.length < 10) {
-    if (hint) hint.textContent = "WhatsApp parece incompleto. Ex.: 11999999999";
-    return;
-  }
-
-  if (hint) hint.textContent = "Abrindo WhatsApp…";
-  window.open(url, "_blank", "noopener,noreferrer");
+  if (hint) hint.textContent = "Mensagem pronta! Em um projeto real, este envio iria para o backend.";
   form.reset();
-  if (hint) hint.textContent = "Tudo certo. Se não abrir, revise o número do WhatsApp.";
 });
