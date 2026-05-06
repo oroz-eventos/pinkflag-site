@@ -585,13 +585,13 @@ h3.title2,
   width: 100%;
   display: flex;
   align-items: center;
-  padding: clamp(28px, 4vw, 64px) 0;
+  padding: clamp(44px, 6vw, 104px) 0;
 }
 
 .contact__copy {
   pointer-events: auto;
   max-width: 62ch;
-  padding-left: clamp(0px, 2vw, 28px);
+  padding-left: clamp(0px, 4vw, 64px);
 }
 
 .contact__copy h2 {
