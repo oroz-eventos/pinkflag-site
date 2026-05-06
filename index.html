@@ -10,7 +10,7 @@
     <title>Pink Flag — Uniformes</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
-  <body>
+  <body class="has-hero-video">
     <a class="skip-link" href="#conteudo">Pular para o conteudo</a>
 
     <header class="header">
@@ -43,45 +43,28 @@
     </header>
 
     <main id="conteudo">
-      <section class="hero" id="topo">
-        <div class="container hero__grid">
-          <div class="hero__copy">
-            <p class="kicker">Moda em uniformes</p>
-            <h1>Minimalismo, caimento e identidade para equipes.</h1>
-            <p class="lead">
-              Coleções desenhadas para rotina real: tecidos, modelagem e acabamentos que sustentam a
-              marca no dia a dia.
-            </p>
+      <section class="hero hero--video" id="topo" aria-label="Destaque">
+        <video
+          class="hero__video"
+          autoplay
+          muted
+          loop
+          playsinline
+          preload="metadata"
+          aria-hidden="true"
+        >
+          <source src="./assets/video/hero.webm" type="video/webm" />
+          <source src="./assets/video/hero.mp4" type="video/mp4" />
+        </video>
+        <div class="hero__overlay" aria-hidden="true"></div>
 
-            <div class="hero__actions">
-              <a class="button" href="#contato">Solicitar catalogo</a>
-              <a class="button button--ghost" href="#colecao">Ver colecao</a>
-            </div>
-
-            <div class="hero__meta" aria-label="Informacoes">
-              <div class="metaItem">
-                <span class="metaItem__k">Prazo</span>
-                <span class="metaItem__v">sob consulta</span>
-              </div>
-              <div class="metaItem">
-                <span class="metaItem__k">Grade</span>
-                <span class="metaItem__v">do PP ao 4G</span>
-              </div>
-              <div class="metaItem">
-                <span class="metaItem__k">Personalizacao</span>
-                <span class="metaItem__v">bordado e aplicacoes</span>
-              </div>
-            </div>
+        <div class="container hero__content">
+          <p class="hero__eyebrow">Moda em uniformes</p>
+          <h1>Minimalismo, caimento e identidade para equipes.</h1>
+          <div class="hero__actions">
+            <a class="button" href="#contato">Solicitar catalogo</a>
+            <a class="button button--ghost button--onMedia" href="#colecao">Ver colecao</a>
           </div>
-
-          <aside class="hero__visual" aria-label="Imagem destaque da colecao">
-            <div class="visualFrame">
-              <div class="visualFrame__tag">Colecao 2026</div>
-              <div class="visualFrame__caption">
-                Silhuetas limpas, tons neutros e detalhes no rosa da marca.
-              </div>
-            </div>
-          </aside>
         </div>
       </section>
 
