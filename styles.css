@@ -526,6 +526,7 @@ h2 {
 /* Contato */
 .contact {
   padding: 0;
+  position: relative;
 }
 
 .contact__media {
@@ -535,7 +536,6 @@ h2 {
   overflow: hidden;
   margin-right: calc(50% - 50vw);
   margin-left: calc(50% - 50vw);
-  position: relative;
 }
 
 .contact__media img {
@@ -557,13 +557,14 @@ h2 {
 .contact__inner {
   width: 100%;
   display: flex;
-  align-items: flex-end;
-  padding: 36px 0;
+  align-items: center;
+  padding: clamp(28px, 4vw, 64px) 0;
 }
 
 .contact__copy {
   pointer-events: auto;
   max-width: 62ch;
+  padding-left: clamp(0px, 2vw, 28px);
 }
 
 .contact__copy h2 {
