@@ -100,3 +100,84 @@ if (!prefersReducedMotion) {
 }
 
 document.querySelectorAll("[data-tabs]").forEach((root) => initTabs(root));
+
+function initModal(key) {
+  const modal = document.getElementById(`${key}Modal`);
+  if (!modal) return;
+
+  const openers = Array.from(document.querySelectorAll(`[data-modal-open="${key}"]`));
+  const closers = Array.from(document.querySelectorAll(`[data-modal-close="${key}"]`));
+  const dialog = modal.querySelector(".modal__dialog");
+  if (!dialog) return;
+
+  let lastActive = null;
+
+  function getFocusable() {
+    return Array.from(
+      dialog.querySelectorAll(
+        'a[href], button:not([disabled]), textarea, input, select, [tabindex]:not([tabindex="-1"])',
+      ),
+    ).filter((el) => !el.hasAttribute("disabled") && !el.getAttribute("aria-hidden"));
+  }
+
+  function onKeyDown(e) {
+    if (e.key === "Escape") {
+      e.preventDefault();
+      close();
+      return;
+    }
+
+    if (e.key !== "Tab") return;
+    const focusable = getFocusable();
+    if (!focusable.length) return;
+    const first = focusable[0];
+    const last = focusable[focusable.length - 1];
+
+    if (e.shiftKey && document.activeElement === first) {
+      e.preventDefault();
+      last.focus();
+      return;
+    }
+
+    if (!e.shiftKey && document.activeElement === last) {
+      e.preventDefault();
+      first.focus();
+    }
+  }
+
+  function open() {
+    lastActive = document.activeElement;
+    modal.hidden = false;
+    document.body.style.overflow = "hidden";
+    const focusable = getFocusable();
+    (focusable[0] ?? dialog).focus();
+    modal.addEventListener("keydown", onKeyDown);
+  }
+
+  function close() {
+    modal.hidden = true;
+    document.body.style.overflow = "";
+    modal.removeEventListener("keydown", onKeyDown);
+    if (lastActive && typeof lastActive.focus === "function") lastActive.focus();
+  }
+
+  openers.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      open();
+    }),
+  );
+
+  closers.forEach((btn) =>
+    btn.addEventListener("click", () => {
+      close();
+    }),
+  );
+
+  modal.addEventListener("click", (e) => {
+    const target = e.target;
+    if (!(target instanceof Element)) return;
+    if (target.matches(`[data-modal-close="${key}"]`)) return;
+  });
+}
+
+initModal("contato");

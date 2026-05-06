@@ -399,7 +399,78 @@
           </figure>
         </div>
       </section>
+
+      <section class="section contact" id="contato" aria-label="Contato">
+        <figure class="contact__media" aria-hidden="true">
+          <img
+            src="https://placehold.co/1920x840/png?bg=F7EEE7&fg=7D1535&text=Contato"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="contact__overlay">
+          <div class="container contact__inner">
+            <div class="contact__copy" data-reveal>
+              <h2>Uniforme não é custo. É ativo de marca.</h2>
+              <p>
+                Empresas que entendem isso constroem percepção, consistência e valor em cada ponto de
+                contato. A Pink Flag está pronta para traduzir o seu posicionamento em produto.
+              </p>
+              <button class="button" type="button" data-modal-open="contato">
+                Fale com a Pink Flag
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
+
+    <div class="modal" id="contatoModal" role="dialog" aria-modal="true" aria-labelledby="contatoModalTitle" hidden>
+      <div class="modal__backdrop" data-modal-close="contato"></div>
+      <div class="modal__dialog" role="document">
+        <figure class="modal__media" aria-hidden="true">
+          <img
+            src="https://placehold.co/1920x840/png?bg=F7EEE7&fg=7D1535&text=Pink+Flag"
+            alt=""
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+
+        <div class="modal__body">
+          <div class="modal__head">
+            <h3 class="modal__title" id="contatoModalTitle">Fale com a Pink Flag</h3>
+            <button class="modal__close" type="button" aria-label="Fechar" data-modal-close="contato">
+              ✕
+            </button>
+          </div>
+
+          <form class="contactForm" id="contatoForm">
+            <label class="field">
+              <span>Nome</span>
+              <input name="name" autocomplete="name" required />
+            </label>
+            <label class="field">
+              <span>Empresa</span>
+              <input name="company" autocomplete="organization" required />
+            </label>
+            <label class="field">
+              <span>Telefone</span>
+              <input name="phone" autocomplete="tel" inputmode="tel" required />
+            </label>
+            <label class="field field--full">
+              <span>Mensagem</span>
+              <textarea name="message" rows="4" required></textarea>
+            </label>
+            <div class="modal__actions field--full">
+              <button class="button" type="submit">Enviar mensagem</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
 
     <script src="./script.js"></script>
   </body>
