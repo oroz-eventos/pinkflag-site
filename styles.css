@@ -1334,12 +1334,14 @@ h3.title2,
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
   gap: 44px 28px;
+  align-items: start;
 }
 
 .productCat {
   border: 0;
   background: transparent;
   padding: 0;
+  min-width: 0; /* allow equal columns even with long titles */
 }
 
 .productCat__head {
@@ -1382,9 +1384,9 @@ h3.title2,
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 10px;
+  gap: 14px;
   color: rgba(31, 15, 22, 0.72);
-  line-height: 1.35;
+  line-height: 1.55;
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
