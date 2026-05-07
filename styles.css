@@ -1326,13 +1326,14 @@ h3.title2,
   background: rgba(0, 0, 0, 0.04);
 }
 
-/* Nossos Produtos */
+/* Nossos Produtos — layout editorial em colunas (referência) */
 .productCats {
-  margin-top: 20px;
+  margin-top: 32px;
   padding-top: 0;
   display: grid;
   grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 48px 32px;
+  column-gap: clamp(20px, 3vw, 40px);
+  row-gap: 0;
   align-items: start;
 }
 
@@ -1340,88 +1341,42 @@ h3.title2,
   border: 0;
   background: transparent;
   padding: 0;
-  min-width: 0; /* allow equal columns even with long titles */
-  text-align: center;
+  min-width: 0;
+  text-align: left;
 }
 
 .productCat__head {
-  display: grid;
-  gap: 12px;
-  margin-bottom: 16px;
-  justify-items: stretch;
+  margin: 0 0 18px;
 }
 
-.productCat__thumb {
-  width: 100%;
-  aspect-ratio: 18 / 9;
-  border-radius: 0;
-  border: 0;
-  box-shadow: none;
-  background:
-    radial-gradient(ellipse 85% 100% at 50% 0%, rgba(180, 60, 100, 0.07) 0%, transparent 62%),
-    linear-gradient(165deg, rgba(253, 249, 246, 0.95) 0%, rgba(247, 238, 231, 0.45) 100%);
-  display: grid;
-  place-items: center;
-  overflow: hidden;
-  transition: transform 320ms cubic-bezier(0.33, 1, 0.68, 1);
+.productCat__titleRow {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 14px;
+  border-bottom: 1px solid rgba(31, 15, 22, 0.22);
 }
 
-.productCat__thumbImg {
-  width: 24px;
-  height: 24px;
+.productCat__icon {
+  width: 22px;
+  height: 22px;
+  flex-shrink: 0;
   display: block;
-  opacity: 0.98;
-  filter: none;
-  transition: transform 260ms cubic-bezier(0.33, 1, 0.68, 1), opacity 260ms ease;
-}
-
-.productCat {
-  transition: transform 260ms cubic-bezier(0.33, 1, 0.68, 1);
-  transform-origin: center top;
-  will-change: transform;
-}
-
-/* Hover editorial: cresce sutilmente e “abre” o thumb na horizontal */
-.productCats:hover .productCat {
-  transform: scaleX(0.995);
-}
-
-.productCats:hover .productCat:hover {
-  transform: scaleX(1.012);
-}
-
-.productCats:hover .productCat:hover .productCat__thumb {
-  transform: scaleX(1.035);
-}
-
-.productCats:hover .productCat:hover .productCat__thumbImg {
-  transform: none;
-  opacity: 1;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .productCat,
-  .productCat__thumb,
-  .productCat__thumbImg {
-    transition: none;
-  }
-
-  .productCats:hover .productCat,
-  .productCats:hover .productCat:hover,
-  .productCats:hover .productCat:hover .productCat__thumb,
-  .productCats:hover .productCat:hover .productCat__thumbImg {
-    transform: none;
-  }
+  object-fit: contain;
 }
 
 .productCat__title {
   margin: 0;
+  flex: 1;
+  min-width: 0;
   font-family: var(--font-display);
   font-weight: var(--font-display-weight);
-  font-size: clamp(20px, 1.15vw, 24px);
-  line-height: 1.08;
-  letter-spacing: -0.015em;
-  text-align: center;
+  font-size: 11px;
+  line-height: 1.2;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--color-text);
+  text-align: left;
   text-wrap: balance;
 }
 
@@ -1430,7 +1385,7 @@ h3.title2,
   padding: 0;
   list-style: none;
   display: grid;
-  gap: 12px;
+  gap: 10px;
   font-family: var(--font-sans);
   font-size: var(--text-body);
   font-weight: 400;
@@ -1438,11 +1393,11 @@ h3.title2,
   line-height: 1.5;
   letter-spacing: normal;
   text-transform: none;
-  text-align: center;
+  text-align: left;
 }
 
 .productCat__list li {
-  text-align: center;
+  text-align: left;
   text-wrap: balance;
 }
 
@@ -1792,7 +1747,14 @@ h3 {
 
   .productCats {
     grid-template-columns: 1fr;
-    gap: 32px;
+    column-gap: 0;
+    row-gap: 0;
+  }
+
+  .productCat + .productCat {
+    margin-top: 32px;
+    padding-top: 32px;
+    border-top: 1px solid var(--color-line);
   }
 
   .contact__inner {
@@ -1849,6 +1811,21 @@ h3 {
     width: min(720px, calc(100vw - 20px));
     max-height: calc(100dvh - 20px);
     max-height: calc(100vh - 20px);
+  }
+}
+
+/* Nossos Produtos: duas colunas só em telas médias */
+@media (min-width: 640px) and (max-width: 900px) {
+  .productCats {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    column-gap: 28px;
+    row-gap: 40px;
+  }
+
+  .productCat + .productCat {
+    margin-top: 0;
+    padding-top: 0;
+    border-top: 0;
   }
 }
 
