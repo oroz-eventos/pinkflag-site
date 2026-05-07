@@ -1434,6 +1434,12 @@ h3 {
     scroll-margin-top: 86px;
   }
 
+  /* Contato tem mídia full-bleed; não adicionar padding vertical no mobile */
+  .section.contact,
+  .contact {
+    padding: 0;
+  }
+
   .hero--video {
     position: relative;
     height: 100vh;
