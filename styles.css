@@ -305,6 +305,56 @@ a {
   padding: 10px 14px;
 }
 
+/* Seta que surge no hover (Contato / Fale com a Pink Flag) */
+.button--arrow {
+  gap: 0;
+  justify-content: center;
+}
+
+.button--arrow .button__label {
+  display: inline-block;
+}
+
+.button--arrow .button__iconArrow {
+  display: inline-flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 0;
+  opacity: 0;
+  transform: translateX(-5px);
+  overflow: hidden;
+  pointer-events: none;
+  transition:
+    width 0.32s cubic-bezier(0.33, 1, 0.68, 1),
+    opacity 0.22s ease,
+    transform 0.32s cubic-bezier(0.33, 1, 0.68, 1);
+}
+
+.button--arrow .button__iconArrow svg {
+  display: block;
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.button--arrow:hover .button__iconArrow,
+.button--arrow:focus-visible .button__iconArrow {
+  width: 16px;
+  opacity: 1;
+  transform: translateX(2px);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .button--arrow .button__iconArrow {
+    transition: opacity 0.15s ease;
+  }
+
+  .button--arrow:hover .button__iconArrow,
+  .button--arrow:focus-visible .button__iconArrow {
+    transform: none;
+  }
+}
+
 /* Footer */
 .footer {
   padding: 140px 0 84px;
