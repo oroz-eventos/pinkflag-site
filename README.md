@@ -27,12 +27,10 @@ Depois, acesse:
 
 As fontes do projeto são carregadas localmente via `@font-face` em `styles.css`.
 
-- **Títulos**: Esthetique (`EsthetiqueTypeface-PERSONALUSEONLY-Regular.otf`)
-- **Texto/UI**: Proxima Nova (Regular/Semibold/Bold/Extrabold)
+- **Títulos e Texto/UI**: Proxima Nova (Regular/Semibold/Bold/Extrabold)
 
 Para funcionar, coloque os arquivos exatamente com estes nomes em `assets/fonts/`:
 
-- `EsthetiqueTypeface-PERSONALUSEONLY-Regular.otf`
 - `Proxima Nova Regular.ttf`
 - `Proxima Nova Semibold.ttf`
 - `Proxima Nova Bold.otf`
