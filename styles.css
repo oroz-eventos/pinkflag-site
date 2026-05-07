@@ -1367,7 +1367,7 @@ h3.title2,
 }
 
 .productCat__thumbImg {
-  width: min(164px, 78%);
+  width: min(104px, 54%);
   height: auto;
   display: block;
   opacity: 0.98;
@@ -1395,7 +1395,7 @@ h3.title2,
 }
 
 .productCats:hover .productCat:hover .productCat__thumbImg {
-  transform: scale(1.02);
+  transform: none;
   opacity: 1;
 }
 
