@@ -463,8 +463,8 @@ a {
   padding: 0;
   width: 100vw;
   width: 100dvw;
-  height: 96vw;
-  height: 96dvw;
+  height: 100vh;
+  height: 100svh;
   margin: 0 auto 112px;
   overflow: hidden;
 }
@@ -1460,10 +1460,23 @@ h3 {
 
   .hero--video {
     position: relative;
-    height: 96vw;
-    height: 96dvw;
+    height: 100vh;
+    height: 100svh;
     min-height: 0;
     margin: 0 0 24px;
+  }
+
+  /* Editorial no mobile: mais alto (estilo hero) */
+  .sectionBreak__media {
+    aspect-ratio: auto;
+    height: 100vh;
+    height: 100svh;
+    max-height: none;
+  }
+
+  .sectionBreak__media img,
+  .sectionBreak__media video {
+    height: 100%;
   }
 
   /* Percent height on <video> needs a definite parent height on mobile */
