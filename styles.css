@@ -807,7 +807,22 @@ h3.title2,
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(180, 60, 100, 0.8);
+  /* Rosado com gradiente sutil + leve blur para legibilidade do texto */
+  background:
+    radial-gradient(
+      circle at 20% 20%,
+      rgba(180, 60, 100, 0.82) 0%,
+      rgba(180, 60, 100, 0.64) 42%,
+      rgba(125, 21, 53, 0.72) 100%
+    ),
+    linear-gradient(
+      140deg,
+      rgba(180, 60, 100, 0.58) 0%,
+      rgba(125, 21, 53, 0.48) 55%,
+      rgba(195, 95, 122, 0.52) 100%
+    );
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   pointer-events: none;
 }
 
