@@ -34,8 +34,9 @@
   --gutter: 28px;
 
   /* Typography */
-  --font-display: "Esthetique", ui-serif, Georgia, "Times New Roman", serif;
-  --font-display-weight: 400;
+  --font-display: "Proxima Nova", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Arial, sans-serif;
+  --font-display-weight: 700;
   --font-sans: "Proxima Nova", ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
     Arial, sans-serif;
 
@@ -50,15 +51,6 @@
   :root {
     --vw: 100dvw;
   }
-}
-
-@font-face {
-  font-family: "Esthetique";
-  src:
-    url("./assets/fonts/EsthetiqueTypeface-PERSONALUSEONLY-Regular.otf") format("opentype");
-  font-style: normal;
-  font-weight: 400;
-  font-display: swap;
 }
 
 @font-face {

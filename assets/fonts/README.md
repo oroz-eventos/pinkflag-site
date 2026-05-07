@@ -6,7 +6,6 @@ Este site usa fontes locais via `@font-face` em `styles.css`.
 
 Coloque os arquivos de fonte nesta pasta (`assets/fonts/`) com **estes nomes**:
 
-- `EsthetiqueTypeface-PERSONALUSEONLY-Regular.otf`
 - `Proxima Nova Regular.ttf`
 - `Proxima Nova Semibold.ttf`
 - `Proxima Nova Bold.otf`
