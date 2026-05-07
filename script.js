@@ -15,6 +15,7 @@ function closeMenu() {
   menu.classList.remove("is-open");
   menuToggle.setAttribute("aria-expanded", "false");
   menuToggle.textContent = "Menu";
+  document.body.style.overflow = "";
 }
 
 menuToggle?.addEventListener("click", () => {
@@ -22,10 +23,15 @@ menuToggle?.addEventListener("click", () => {
   const isOpen = menu.classList.toggle("is-open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
   menuToggle.textContent = isOpen ? "Fechar" : "Menu";
+  document.body.style.overflow = isOpen ? "hidden" : "";
 });
 
 menu?.querySelectorAll("a").forEach((link) => {
   link.addEventListener("click", closeMenu);
+});
+
+menu?.querySelectorAll("[data-menu-close]").forEach((btn) => {
+  btn.addEventListener("click", closeMenu);
 });
 
 function initTabs(root) {
