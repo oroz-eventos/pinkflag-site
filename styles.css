@@ -1553,14 +1553,29 @@ h3 {
   }
 
   /* Contato: garantir que a mídia ocupe toda a seção no mobile */
-  .contact__media {
-    aspect-ratio: auto;
+  .contact__frame {
+    position: relative;
+    /* O overlay sempre mede o frame; o frame mede a foto */
     height: min(92vh, 820px);
     height: min(92svh, 820px);
+    overflow: hidden;
+  }
+
+  .contact__media {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    aspect-ratio: auto;
+    height: 100%;
   }
 
   .contact__media img {
     height: 100%;
+  }
+
+  .contact__overlay {
+    position: absolute;
+    inset: 0;
   }
 
   .contactForm {
