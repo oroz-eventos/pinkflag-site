@@ -305,7 +305,7 @@ a {
   padding: 10px 14px;
 }
 
-/* Seta que surge no hover (Contato / Fale com a Pink Flag) */
+/* Seta que surge no hover (Contato, Fale com a Pink Flag, Enviar mensagem) */
 .button--arrow {
   gap: 0;
   justify-content: center;
@@ -320,12 +320,14 @@ a {
   align-items: center;
   justify-content: flex-start;
   width: 0;
+  margin-left: 0;
   opacity: 0;
   transform: translateX(-5px);
   overflow: hidden;
   pointer-events: none;
   transition:
     width 0.32s cubic-bezier(0.33, 1, 0.68, 1),
+    margin-left 0.32s cubic-bezier(0.33, 1, 0.68, 1),
     opacity 0.22s ease,
     transform 0.32s cubic-bezier(0.33, 1, 0.68, 1);
 }
@@ -340,6 +342,7 @@ a {
 .button--arrow:hover .button__iconArrow,
 .button--arrow:focus-visible .button__iconArrow {
   width: 18px;
+  margin-left: 8px;
   opacity: 1;
   transform: translateX(2px);
 }
