@@ -1341,12 +1341,14 @@ h3.title2,
   background: transparent;
   padding: 0;
   min-width: 0; /* allow equal columns even with long titles */
+  text-align: center;
 }
 
 .productCat__head {
   display: grid;
   gap: 12px;
   margin-bottom: 16px;
+  justify-items: stretch;
 }
 
 .productCat__thumb {
@@ -1419,6 +1421,8 @@ h3.title2,
   font-size: clamp(20px, 1.15vw, 24px);
   line-height: 1.08;
   letter-spacing: -0.015em;
+  text-align: center;
+  text-wrap: balance;
 }
 
 .productCat__list {
@@ -1433,6 +1437,12 @@ h3.title2,
   font-weight: 500;
   letter-spacing: 0.1em;
   text-transform: uppercase;
+  text-align: center;
+}
+
+.productCat__list li {
+  text-align: center;
+  text-wrap: balance;
 }
 
 /* “Nossos Produtos”: respiro editorial */
