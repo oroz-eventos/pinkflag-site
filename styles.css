@@ -339,7 +339,7 @@ a {
 
 .button--arrow:hover .button__iconArrow,
 .button--arrow:focus-visible .button__iconArrow {
-  width: 16px;
+  width: 18px;
   opacity: 1;
   transform: translateX(2px);
 }
