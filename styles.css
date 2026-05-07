@@ -261,6 +261,11 @@ a {
   gap: 18px;
 }
 
+.nav__brand,
+.nav__close {
+  display: none;
+}
+
 .nav a {
   color: var(--color-muted);
   font-weight: 600;
@@ -1452,10 +1457,10 @@ h3 {
   }
 
   .nav__brand {
+    display: inline-flex;
     position: absolute;
     top: max(14px, env(safe-area-inset-top));
     left: 18px;
-    display: inline-flex;
     align-items: center;
   }
 
@@ -1486,6 +1491,7 @@ h3 {
   }
 
   .nav__close {
+    display: inline-flex;
     appearance: none;
     border: 0;
     border-radius: 12px;
