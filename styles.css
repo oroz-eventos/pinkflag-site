@@ -287,6 +287,11 @@ a {
   font-size: 12px;
   background: var(--color-primary);
   color: #ffffff;
+  cursor: pointer;
+}
+
+.button:disabled {
+  cursor: not-allowed;
 }
 
 .button--ghost {
