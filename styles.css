@@ -1326,6 +1326,73 @@ h3.title2,
   background: rgba(0, 0, 0, 0.04);
 }
 
+/* Nossos Produtos */
+.productCats {
+  margin-top: 26px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.productCat {
+  border: 1px solid var(--color-line);
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 0;
+  padding: 22px 22px 20px;
+}
+
+.productCat__head {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.productCat__icon {
+  width: 34px;
+  height: 34px;
+  border-radius: 10px;
+  background: rgba(180, 60, 100, 0.1);
+  color: var(--color-primary);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 auto;
+}
+
+.productCat__icon svg {
+  width: 18px;
+  height: 18px;
+  display: block;
+}
+
+.productCat__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
+  font-size: 22px;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+}
+
+.productCat__list {
+  margin: 0;
+  padding-left: 18px;
+  display: grid;
+  gap: 8px;
+  color: var(--color-muted);
+  line-height: 1.55;
+}
+
+.productCat__list--cols {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  column-gap: 24px;
+}
+
+.productCat--wide {
+  grid-column: span 2;
+}
+
 .whatCard,
 .gridCard {
   border: 1px solid var(--color-line);
@@ -1659,6 +1726,19 @@ h3 {
     border-left: 0;
     border-top: 1px solid var(--color-line);
     min-height: 220px;
+  }
+
+  .productCats {
+    grid-template-columns: 1fr;
+    gap: 14px;
+  }
+
+  .productCat--wide {
+    grid-column: auto;
+  }
+
+  .productCat__list--cols {
+    grid-template-columns: 1fr;
   }
 
   .contact__inner {
