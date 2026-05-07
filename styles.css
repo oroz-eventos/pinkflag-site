@@ -736,6 +736,7 @@ h3.title2,
 .what__title {
   margin: 0;
   font-family: var(--font-display);
+  font-weight: var(--font-display-weight);
   font-size: clamp(28px, 3.6vw, 54px);
   line-height: 1;
 }
