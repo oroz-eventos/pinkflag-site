@@ -1429,18 +1429,24 @@ h3 {
     position: fixed;
     inset: 0;
     top: 0;
-    background: rgba(255, 255, 255, 0.98);
+    background: #ffffff;
     border: 0;
     padding: max(18px, env(safe-area-inset-top)) 22px max(22px, env(safe-area-inset-bottom));
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 22px;
-    z-index: 18;
+    z-index: 60;
+    overscroll-behavior: contain;
   }
 
   .nav.is-open {
     display: flex;
+  }
+
+  /* Quando menu abre, garantir que nada “vaze” visualmente por cima/baixo */
+  body.menu-open {
+    overflow: hidden;
   }
 
   .nav__brand {

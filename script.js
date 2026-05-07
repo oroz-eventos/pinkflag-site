@@ -16,6 +16,7 @@ function closeMenu() {
   menuToggle.setAttribute("aria-expanded", "false");
   menuToggle.textContent = "Menu";
   document.body.style.overflow = "";
+  document.body.classList.remove("menu-open");
 }
 
 menuToggle?.addEventListener("click", () => {
@@ -24,6 +25,7 @@ menuToggle?.addEventListener("click", () => {
   menuToggle.setAttribute("aria-expanded", String(isOpen));
   menuToggle.textContent = isOpen ? "Fechar" : "Menu";
   document.body.style.overflow = isOpen ? "hidden" : "";
+  document.body.classList.toggle("menu-open", isOpen);
 });
 
 menu?.querySelectorAll("a").forEach((link) => {
