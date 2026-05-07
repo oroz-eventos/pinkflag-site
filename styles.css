@@ -1430,14 +1430,14 @@ h3 {
   }
 
   .section {
-    padding: 84px 0;
+    padding: 64px 0;
     scroll-margin-top: 86px;
   }
 
   .hero--video {
     min-height: 100vh;
     min-height: 100svh;
-    margin-bottom: 84px;
+    margin-bottom: 40px;
   }
 
   .title1,
@@ -1488,7 +1488,7 @@ h3 {
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 10px;
+    padding-bottom: 16px;
   }
 
   .catalogTabs__list::-webkit-scrollbar {
@@ -1497,6 +1497,10 @@ h3 {
 
   .catalogTabs__tab {
     white-space: nowrap;
+  }
+
+  .catalogTabs__tab[aria-selected="true"]::after {
+    bottom: -12px;
   }
 
   .catalogCarousel__viewport {
@@ -1535,6 +1539,17 @@ h3 {
 
   .contact__inner {
     padding: 22px 0;
+  }
+
+  /* Contato: garantir que a mídia ocupe toda a seção no mobile */
+  .contact__media {
+    aspect-ratio: auto;
+    height: min(92vh, 820px);
+    height: min(92svh, 820px);
+  }
+
+  .contact__media img {
+    height: 100%;
   }
 
   .contactForm {
