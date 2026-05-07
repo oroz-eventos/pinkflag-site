@@ -461,9 +461,12 @@ a {
 /* Full-viewport hero media (placeholder for video) */
 .hero--video {
   padding: 0;
-  min-height: 100vh;
-  min-height: 100svh;
-  margin-bottom: 112px;
+  height: 95vh;
+  height: 95svh;
+  width: 95vw;
+  width: 95dvw;
+  margin: 0 auto 112px;
+  overflow: hidden;
 }
 
 .hero__video {
@@ -1460,7 +1463,8 @@ h3 {
     height: 100vh;
     height: 100svh;
     min-height: 0;
-    margin-bottom: 24px;
+    width: 100%;
+    margin: 0 0 24px;
   }
 
   /* Percent height on <video> needs a definite parent height on mobile */
