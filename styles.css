@@ -1277,34 +1277,7 @@ h3.title2,
 
 /* Clareia só a base da foto para a legenda ganhar contraste sobre fundos escuros ou reflexos */
 .catalogSlide::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: clamp(96px, 34%, 240px);
-  pointer-events: none;
-  z-index: 1;
-  background: linear-gradient(
-    to top,
-    var(--page-bg) 0%,
-    rgba(253, 249, 246, 0.82) 28%,
-    rgba(253, 249, 246, 0.38) 58%,
-    rgba(253, 249, 246, 0) 100%
-  );
-}
-
-.catalogSlide figcaption {
-  position: absolute;
-  left: 14px;
-  bottom: 14px;
-  z-index: 2;
-  padding: 0;
-  font-size: 12px;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(42, 21, 32, 0.9);
-  text-shadow: 0 1px 1px rgba(255, 255, 255, 0.55);
+  content: none;
 }
 
 .catalogSlide img {
@@ -1670,13 +1643,6 @@ h3 {
     padding-left: max(var(--gutter), 14px);
     padding-right: max(var(--gutter), 14px);
     gap: 12px;
-  }
-
-  .catalogSlide figcaption {
-    left: 12px;
-    bottom: 12px;
-    font-size: 11px;
-    letter-spacing: 0.14em;
   }
 
   .catalogCarousel__prev,
