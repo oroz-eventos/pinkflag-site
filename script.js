@@ -14,12 +14,14 @@ function closeMenu() {
   if (!menu || !menuToggle) return;
   menu.classList.remove("is-open");
   menuToggle.setAttribute("aria-expanded", "false");
+  menuToggle.textContent = "Menu";
 }
 
 menuToggle?.addEventListener("click", () => {
   if (!menu || !menuToggle) return;
   const isOpen = menu.classList.toggle("is-open");
   menuToggle.setAttribute("aria-expanded", String(isOpen));
+  menuToggle.textContent = isOpen ? "Fechar" : "Menu";
 });
 
 menu?.querySelectorAll("a").forEach((link) => {
