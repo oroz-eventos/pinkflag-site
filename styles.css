@@ -1539,6 +1539,22 @@ h3 {
     z-index: 30;
   }
 
+  /*
+    iOS/Safari can break `position: fixed` descendants when an ancestor uses
+    backdrop-filter (they behave like `absolute` and scroll with the page).
+    On mobile, disable backdrop-filter so the fullscreen nav overlay always
+    pins to the viewport even after scrolling.
+  */
+  .header.is-scrolled {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  body.menu-open .header {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
   .section {
     padding: 64px 0;
     scroll-margin-top: 86px;
