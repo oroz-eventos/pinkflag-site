@@ -117,22 +117,41 @@ function initCatalogCarousels() {
       return Array.from(track.querySelectorAll(".catalogSlide"));
     }
 
-    function getActiveSlideIndex(slides) {
-      const sl = viewport.scrollLeft;
-      let idx = 0;
-      for (let i = 0; i < slides.length; i++) {
-        if (slides[i].offsetLeft <= sl + 12) idx = i;
-      }
-      return idx;
+    function getScrollPaddingLeft() {
+      const v = parseFloat(getComputedStyle(viewport).scrollPaddingLeft);
+      return Number.isFinite(v) ? v : 0;
     }
 
-    /** Alinha o slide à borda esquerda do viewport (scroll horizontal só neste elemento). */
-    function scrollSlideIntoViewport(slide) {
-      const vRect = viewport.getBoundingClientRect();
-      const sRect = slide.getBoundingClientRect();
-      const delta = sRect.left - vRect.left;
+    /** Posição de scroll que alinha o início do slide à área visível (respeita scroll-padding do CSS). */
+    function getScrollLeftForSlideIndex(slides, index) {
+      const slide = slides[index];
+      if (!slide) return 0;
+      const pad = getScrollPaddingLeft();
+      return Math.max(0, slide.offsetLeft - pad);
+    }
+
+    /** Slide mais próximo da posição atual (funciona no meio entre dois itens após arrastar). */
+    function getNearestSlideIndex(slides) {
+      const sl = viewport.scrollLeft;
+      let best = 0;
+      let bestDiff = Infinity;
+      for (let i = 0; i < slides.length; i++) {
+        const ideal = getScrollLeftForSlideIndex(slides, i);
+        const diff = Math.abs(sl - ideal);
+        if (diff < bestDiff) {
+          bestDiff = diff;
+          best = i;
+        }
+      }
+      return best;
+    }
+
+    function goToSlideIndex(index) {
+      const slides = getSlides();
+      const slide = slides[index];
+      if (!slide) return;
       viewport.scrollTo({
-        left: viewport.scrollLeft + delta,
+        left: getScrollLeftForSlideIndex(slides, index),
         behavior: reduceMotion ? "auto" : "smooth",
       });
     }
@@ -153,19 +172,19 @@ function initCatalogCarousels() {
     btnPrev.addEventListener("click", () => {
       if (btnPrev.disabled) return;
       const slides = getSlides();
-      const idx = getActiveSlideIndex(slides);
+      const idx = getNearestSlideIndex(slides);
       const prevIdx = idx - 1;
       if (prevIdx < 0) return;
-      scrollSlideIntoViewport(slides[prevIdx]);
+      goToSlideIndex(prevIdx);
     });
 
     btnNext.addEventListener("click", () => {
       if (btnNext.disabled) return;
       const slides = getSlides();
-      const idx = getActiveSlideIndex(slides);
+      const idx = getNearestSlideIndex(slides);
       const nextIdx = idx + 1;
       if (nextIdx >= slides.length) return;
-      scrollSlideIntoViewport(slides[nextIdx]);
+      goToSlideIndex(nextIdx);
     });
 
     viewport.addEventListener("scroll", updateNavState, { passive: true });
