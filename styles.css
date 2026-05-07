@@ -169,6 +169,33 @@ a {
     box-shadow 180ms ease;
 }
 
+/* Sobre o hero escuro: links e menu em branco; volta ao tom de texto após scroll (.is-scrolled) */
+.header:not(.is-scrolled) .nav a {
+  color: rgba(255, 255, 255, 0.9);
+  transition: color 180ms ease;
+}
+
+.header:not(.is-scrolled) .nav a:hover {
+  color: #ffffff;
+}
+
+/* Menu mobile aberto: fundo claro — manter contraste escuro nos links */
+.header:not(.is-scrolled) .nav.is-open a {
+  color: var(--color-muted);
+}
+
+.header:not(.is-scrolled) .nav.is-open a:hover {
+  color: var(--color-text);
+}
+
+.header:not(.is-scrolled) .menu-toggle {
+  border-color: rgba(255, 255, 255, 0.4);
+  color: #ffffff;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease;
+}
+
 /* Header uses tighter horizontal gutters than page content */
 .header .container {
   width: min(var(--container), calc(100% - 24px));
@@ -240,6 +267,7 @@ a {
   font-size: 13px;
   letter-spacing: 0.12em;
   text-transform: uppercase;
+  transition: color 180ms ease;
 }
 
 .nav a:hover {
