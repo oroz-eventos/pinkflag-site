@@ -1332,8 +1332,8 @@ h3.title2,
   border-top: 1px solid var(--color-line);
   padding-top: 26px;
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
-  gap: 48px 32px;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 44px 28px;
 }
 
 .productCat {
@@ -1388,16 +1388,6 @@ h3.title2,
   font-size: 13px;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-}
-
-.productCat__list--cols {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  column-gap: 36px;
-  row-gap: 10px;
-}
-
-.productCat--wide {
-  grid-column: span 2;
 }
 
 .whatCard,
@@ -1738,14 +1728,6 @@ h3 {
   .productCats {
     grid-template-columns: 1fr;
     gap: 32px;
-  }
-
-  .productCat--wide {
-    grid-column: auto;
-  }
-
-  .productCat__list--cols {
-    grid-template-columns: 1fr;
   }
 
   .contact__inner {
