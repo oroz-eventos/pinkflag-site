@@ -461,10 +461,10 @@ a {
 /* Full-viewport hero media (placeholder for video) */
 .hero--video {
   padding: 0;
-  height: 95vh;
-  height: 95svh;
-  width: 95vw;
-  width: 95dvw;
+  width: 100vw;
+  width: 100dvw;
+  height: 96vw;
+  height: 96dvw;
   margin: 0 auto 112px;
   overflow: hidden;
 }
@@ -1460,10 +1460,9 @@ h3 {
 
   .hero--video {
     position: relative;
-    height: 100vh;
-    height: 100svh;
+    height: 96vw;
+    height: 96dvw;
     min-height: 0;
-    width: 100%;
     margin: 0 0 24px;
   }
 
