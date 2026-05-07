@@ -1429,7 +1429,9 @@ h3 {
     position: fixed;
     inset: 0;
     top: 0;
-    background: #ffffff;
+    background: rgba(255, 255, 255, 0.94);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
     border: 0;
     padding: max(18px, env(safe-area-inset-top)) 22px max(22px, env(safe-area-inset-bottom));
     flex-direction: column;
