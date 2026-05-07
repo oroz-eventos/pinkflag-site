@@ -1367,8 +1367,8 @@ h3.title2,
 }
 
 .productCat__thumbImg {
-  width: min(104px, 54%);
-  height: auto;
+  width: 24px;
+  height: 24px;
   display: block;
   opacity: 0.98;
   filter: none;
