@@ -1499,7 +1499,7 @@ h3 {
     overflow-x: auto;
     scrollbar-width: none;
     -webkit-overflow-scrolling: touch;
-    padding-bottom: 16px;
+    padding-bottom: 0;
   }
 
   .catalogTabs__list::-webkit-scrollbar {
@@ -1508,10 +1508,11 @@ h3 {
 
   .catalogTabs__tab {
     white-space: nowrap;
+    padding-bottom: 14px;
   }
 
   .catalogTabs__tab[aria-selected="true"]::after {
-    bottom: -12px;
+    bottom: -1px;
   }
 
   .catalogCarousel__viewport {
