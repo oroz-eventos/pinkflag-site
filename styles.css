@@ -991,7 +991,6 @@ h3.title2,
 }
 
 .catalogCarousel__viewport {
-  position: relative;
   overflow-x: auto;
   overflow-y: hidden;
   -webkit-overflow-scrolling: touch;
@@ -1003,35 +1002,58 @@ h3.title2,
   scrollbar-width: none; /* Firefox */
 }
 
-/* Dica de scroll horizontal no hover (círculo branco + seta rosa) */
-.catalogCarousel__viewport::after {
-  content: "";
+/* Controle fixo no wrapper — não rola com as fotos; JS avança um slide por clique */
+.catalogCarousel__next {
   position: absolute;
   top: 50%;
   right: max(14px, env(safe-area-inset-right));
-  z-index: 4;
+  z-index: 6;
   width: 48px;
   height: 48px;
-  margin-top: -24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
   border-radius: 50%;
-  background-color: #ffffff;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Cpath fill='%23b43c64' fill-rule='evenodd' d='M4.646 1.646a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 0 .708l-6 6a.5.5 0 0 1-.708-.708L10.293 8 4.646 2.354a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: 22px 22px;
+  background: #ffffff;
+  color: var(--color-primary);
   box-shadow: 0 4px 18px rgba(31, 15, 22, 0.12);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transform: translateY(-50%);
   opacity: 0;
   pointer-events: none;
-  transition: opacity 0.22s ease;
+  transition: opacity 0.22s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
-.catalogCarousel:hover .catalogCarousel__viewport::after {
+.catalogCarousel__next:hover:not(:disabled) {
+  background: #ffffff;
+  color: var(--color-primary-2);
+}
+
+.catalogCarousel__next:focus-visible {
+  outline: 2px solid rgba(180, 60, 100, 0.45);
+  outline-offset: 3px;
   opacity: 1;
+  pointer-events: auto;
+}
+
+.catalogCarousel:hover .catalogCarousel__next:not(:disabled) {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.catalogCarousel__next:disabled {
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
 }
 
 @media (hover: none) {
-  .catalogCarousel__viewport::after {
-    display: none;
+  .catalogCarousel__next:not(:disabled) {
+    opacity: 1;
+    pointer-events: auto;
   }
 }
 

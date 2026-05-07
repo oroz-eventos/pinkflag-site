@@ -101,6 +101,65 @@ if (!prefersReducedMotion) {
 
 document.querySelectorAll("[data-tabs]").forEach((root) => initTabs(root));
 
+function initCatalogCarousels() {
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+  document.querySelectorAll(".catalogCarousel").forEach((root) => {
+    const viewport = root.querySelector(".catalogCarousel__viewport");
+    const track = root.querySelector(".catalogCarousel__track");
+    const btn = root.querySelector(".catalogCarousel__next");
+    if (!viewport || !track || !btn) return;
+
+    function getSlides() {
+      return Array.from(track.querySelectorAll(".catalogSlide"));
+    }
+
+    function getActiveSlideIndex(slides) {
+      const sl = viewport.scrollLeft;
+      let idx = 0;
+      for (let i = 0; i < slides.length; i++) {
+        if (slides[i].offsetLeft <= sl + 12) idx = i;
+      }
+      return idx;
+    }
+
+    function updateNextState() {
+      const slides = getSlides();
+      if (!slides.length) {
+        btn.disabled = true;
+        return;
+      }
+      const maxScroll = viewport.scrollWidth - viewport.clientWidth;
+      btn.disabled = maxScroll <= 2 || viewport.scrollLeft >= maxScroll - 6;
+    }
+
+    btn.addEventListener("click", () => {
+      if (btn.disabled) return;
+      const slides = getSlides();
+      const idx = getActiveSlideIndex(slides);
+      const nextIdx = idx + 1;
+      if (nextIdx >= slides.length) return;
+      slides[nextIdx].scrollIntoView({
+        inline: "start",
+        block: "nearest",
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+    });
+
+    viewport.addEventListener("scroll", updateNextState, { passive: true });
+    window.addEventListener("resize", updateNextState, { passive: true });
+    const ro = new ResizeObserver(updateNextState);
+    ro.observe(viewport);
+    ro.observe(track);
+
+    updateNextState();
+  });
+}
+
+initCatalogCarousels();
+
 function initModal(key) {
   const modal = document.getElementById(`${key}Modal`);
   if (!modal) return;
