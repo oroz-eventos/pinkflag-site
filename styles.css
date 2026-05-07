@@ -1002,11 +1002,11 @@ h3.title2,
   scrollbar-width: none; /* Firefox */
 }
 
-/* Controle fixo no wrapper — não rola com as fotos; JS avança um slide por clique */
+/* Controles fixos no wrapper — não rolam com as fotos; JS move só o scroll do viewport */
+.catalogCarousel__prev,
 .catalogCarousel__next {
   position: absolute;
   top: 50%;
-  right: max(14px, env(safe-area-inset-right));
   z-index: 6;
   width: 48px;
   height: 48px;
@@ -1027,11 +1027,21 @@ h3.title2,
   transition: opacity 0.22s ease, background-color 0.2s ease, color 0.2s ease;
 }
 
+.catalogCarousel__prev {
+  left: max(14px, env(safe-area-inset-left));
+}
+
+.catalogCarousel__next {
+  right: max(14px, env(safe-area-inset-right));
+}
+
+.catalogCarousel__prev:hover:not(:disabled),
 .catalogCarousel__next:hover:not(:disabled) {
   background: #ffffff;
   color: var(--color-primary-2);
 }
 
+.catalogCarousel__prev:focus-visible,
 .catalogCarousel__next:focus-visible {
   outline: 2px solid rgba(180, 60, 100, 0.45);
   outline-offset: 3px;
@@ -1039,11 +1049,13 @@ h3.title2,
   pointer-events: auto;
 }
 
+.catalogCarousel:hover .catalogCarousel__prev:not(:disabled),
 .catalogCarousel:hover .catalogCarousel__next:not(:disabled) {
   opacity: 1;
   pointer-events: auto;
 }
 
+.catalogCarousel__prev:disabled,
 .catalogCarousel__next:disabled {
   opacity: 0;
   visibility: hidden;
@@ -1051,6 +1063,7 @@ h3.title2,
 }
 
 @media (hover: none) {
+  .catalogCarousel__prev:not(:disabled),
   .catalogCarousel__next:not(:disabled) {
     opacity: 1;
     pointer-events: auto;

@@ -109,8 +109,9 @@ function initCatalogCarousels() {
   document.querySelectorAll(".catalogCarousel").forEach((root) => {
     const viewport = root.querySelector(".catalogCarousel__viewport");
     const track = root.querySelector(".catalogCarousel__track");
-    const btn = root.querySelector(".catalogCarousel__next");
-    if (!viewport || !track || !btn) return;
+    const btnPrev = root.querySelector(".catalogCarousel__prev");
+    const btnNext = root.querySelector(".catalogCarousel__next");
+    if (!viewport || !track || !btnPrev || !btnNext) return;
 
     function getSlides() {
       return Array.from(track.querySelectorAll(".catalogSlide"));
@@ -125,36 +126,55 @@ function initCatalogCarousels() {
       return idx;
     }
 
-    function updateNextState() {
+    /** Alinha o slide à borda esquerda do viewport (scroll horizontal só neste elemento). */
+    function scrollSlideIntoViewport(slide) {
+      const vRect = viewport.getBoundingClientRect();
+      const sRect = slide.getBoundingClientRect();
+      const delta = sRect.left - vRect.left;
+      viewport.scrollTo({
+        left: viewport.scrollLeft + delta,
+        behavior: reduceMotion ? "auto" : "smooth",
+      });
+    }
+
+    function updateNavState() {
       const slides = getSlides();
       if (!slides.length) {
-        btn.disabled = true;
+        btnPrev.disabled = true;
+        btnNext.disabled = true;
         return;
       }
       const maxScroll = viewport.scrollWidth - viewport.clientWidth;
-      btn.disabled = maxScroll <= 2 || viewport.scrollLeft >= maxScroll - 6;
+      const sl = viewport.scrollLeft;
+      btnPrev.disabled = sl <= 6;
+      btnNext.disabled = maxScroll <= 2 || sl >= maxScroll - 6;
     }
 
-    btn.addEventListener("click", () => {
-      if (btn.disabled) return;
+    btnPrev.addEventListener("click", () => {
+      if (btnPrev.disabled) return;
+      const slides = getSlides();
+      const idx = getActiveSlideIndex(slides);
+      const prevIdx = idx - 1;
+      if (prevIdx < 0) return;
+      scrollSlideIntoViewport(slides[prevIdx]);
+    });
+
+    btnNext.addEventListener("click", () => {
+      if (btnNext.disabled) return;
       const slides = getSlides();
       const idx = getActiveSlideIndex(slides);
       const nextIdx = idx + 1;
       if (nextIdx >= slides.length) return;
-      slides[nextIdx].scrollIntoView({
-        inline: "start",
-        block: "nearest",
-        behavior: reduceMotion ? "auto" : "smooth",
-      });
+      scrollSlideIntoViewport(slides[nextIdx]);
     });
 
-    viewport.addEventListener("scroll", updateNextState, { passive: true });
-    window.addEventListener("resize", updateNextState, { passive: true });
-    const ro = new ResizeObserver(updateNextState);
+    viewport.addEventListener("scroll", updateNavState, { passive: true });
+    window.addEventListener("resize", updateNavState, { passive: true });
+    const ro = new ResizeObserver(updateNavState);
     ro.observe(viewport);
     ro.observe(track);
 
-    updateNextState();
+    updateNavState();
   });
 }
 
