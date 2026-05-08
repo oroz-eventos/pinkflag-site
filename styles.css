@@ -648,6 +648,14 @@ h1 {
 }
 
 /* Conceito */
+.concept {
+  background: rgba(180, 60, 100, 0.15);
+}
+
+.concept .concept__inner {
+  padding: 72px 0;
+}
+
 .concept__inner {
   display: grid;
   gap: 36px;
@@ -671,7 +679,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 14px 26px;
+  gap: 16px 36px;
 }
 
 .conceptKeyword {
@@ -680,7 +688,9 @@ h1 {
   padding-bottom: 6px;
   color: rgba(31, 15, 22, 0.74);
   font-weight: 600;
-  letter-spacing: 0.02em;
+  font-size: 20px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
   transition: color 160ms ease;
 }
 
@@ -726,6 +736,17 @@ h1 {
   .conceptKeyword,
   .conceptKeyword::after {
     transition: none;
+  }
+}
+
+@media (max-width: 900px) {
+  .concept .concept__inner {
+    padding: 56px 0;
+  }
+
+  .conceptKeyword {
+    font-size: 18px;
+    letter-spacing: 0.1em;
   }
 }
 
