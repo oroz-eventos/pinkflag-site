@@ -650,14 +650,14 @@ h1 {
 /* Conceito */
 .concept__inner {
   display: grid;
-  gap: 18px;
+  gap: 36px;
 }
 
 .concept__head {
   display: grid;
   justify-items: center;
   text-align: center;
-  gap: 14px;
+  gap: 22px;
 }
 
 .concept__head .title1 {
@@ -671,7 +671,7 @@ h1 {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 12px 22px;
+  gap: 14px 26px;
 }
 
 .conceptKeyword {
@@ -710,10 +710,11 @@ h1 {
   margin: 0;
   display: flex;
   justify-content: center;
+  width: 100%;
 }
 
 .concept__video {
-  width: min(960px, 100%);
+  width: 100%;
   aspect-ratio: 16 / 9;
   height: auto;
   display: block;
