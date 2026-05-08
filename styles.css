@@ -791,12 +791,13 @@ h1 {
 
 .mediaBrand {
   position: absolute;
-  top: 16px;
   left: 16px;
+  bottom: 16px;
   z-index: 2;
   display: inline-flex;
-  align-items: center;
-  gap: 10px;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
   pointer-events: none;
 }
 
@@ -806,19 +807,18 @@ h1 {
   background: var(--color-primary);
 }
 
-.mediaBrand__logo {
-  height: 14px;
+.mediaBrand__icon {
+  height: 22px;
   width: auto;
   display: block;
   object-fit: contain;
-  /* For dark-on-light images, keep it subtle and consistent */
-  filter: saturate(0) brightness(0.25);
-  opacity: 0.9;
+  color: var(--color-primary);
+  opacity: 0.95;
 }
 
 .section--about .mediaBrand {
-  top: 18px;
   left: 18px;
+  bottom: 18px;
 }
 
 .about__media img {
@@ -1991,8 +1991,8 @@ h3 {
   }
 
   .section--about .mediaBrand {
-    top: 14px;
     left: 14px;
+    bottom: 14px;
   }
 
   .section--about .about__copy {
