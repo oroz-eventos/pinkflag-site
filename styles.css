@@ -649,7 +649,8 @@ h1 {
 
 /* Conceito */
 .concept {
-  background: rgba(180, 60, 100, 0.15);
+  /* Same neutral tint used in about containers (#1f0f160f) */
+  background: rgba(31, 15, 22, 0.06);
 }
 
 .concept .concept__inner {
@@ -658,14 +659,14 @@ h1 {
 
 .concept__inner {
   display: grid;
-  gap: 36px;
+  gap: 56px;
 }
 
 .concept__head {
   display: grid;
   justify-items: center;
   text-align: center;
-  gap: 22px;
+  gap: 34px;
 }
 
 .concept__head .title1 {
@@ -742,6 +743,14 @@ h1 {
 @media (max-width: 900px) {
   .concept .concept__inner {
     padding: 56px 0;
+  }
+
+  .concept__inner {
+    gap: 44px;
+  }
+
+  .concept__head {
+    gap: 28px;
   }
 
   .conceptKeyword {
