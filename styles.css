@@ -753,9 +753,30 @@ h1 {
     gap: 28px;
   }
 
+  .conceptKeywords {
+    gap: 12px 22px;
+  }
+
   .conceptKeyword {
-    font-size: 18px;
-    letter-spacing: 0.1em;
+    font-size: 16px;
+    letter-spacing: 0.09em;
+  }
+}
+
+@media (max-width: 560px) {
+  .concept .concept__inner {
+    padding: 44px 0;
+  }
+
+  .concept__inner {
+    gap: 36px;
+  }
+
+  /* Make the video feel more editorial on mobile */
+  .concept__video {
+    aspect-ratio: 4 / 5;
+    max-height: 78svh;
+    max-height: 78vh;
   }
 }
 
