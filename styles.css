@@ -1985,8 +1985,8 @@ h3 {
   position: fixed;
   right: max(32px, calc(env(safe-area-inset-right) + 18px));
   bottom: max(28px, calc(env(safe-area-inset-bottom) + 18px));
-  width: 80px;
-  height: 80px;
+  width: 64px;
+  height: 64px;
   border-radius: 999px;
   display: inline-flex;
   align-items: center;
@@ -2000,8 +2000,8 @@ h3 {
 }
 
 .whatsappFab svg {
-  width: 34px;
-  height: 34px;
+  width: 28px;
+  height: 28px;
   display: block;
 }
 
