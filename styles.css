@@ -238,7 +238,7 @@ a {
 .menu-toggle {
   display: none;
   border: 1px solid var(--color-line);
-  border-radius: 10px;
+  border-radius: 0;
   background: transparent;
   color: var(--color-text);
   font: inherit;
@@ -273,7 +273,7 @@ a {
 
 .button {
   border: 1px solid var(--color-primary);
-  border-radius: 999px;
+  border-radius: 0;
   padding: 11px 16px;
   display: inline-flex;
   align-items: center;
@@ -1624,7 +1624,7 @@ h3 {
   .menu-toggle {
     display: inline-flex;
     padding: 10px 12px;
-    border-radius: 12px;
+    border-radius: 0;
   }
 
   .desktop-only {
@@ -1730,7 +1730,7 @@ h3 {
 
   /* Botão Menu/Fechar no mobile no mesmo estilo dos botões (sem outline) */
   .menu-toggle {
-    border-radius: 999px;
+    border-radius: 0;
     padding: 10px 14px;
     font-size: 12px;
     letter-spacing: 0.08em;
