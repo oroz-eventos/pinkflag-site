@@ -1979,3 +1979,44 @@ h3 {
     will-change: auto;
   }
 }
+
+/* Floating WhatsApp button */
+.whatsappFab {
+  position: fixed;
+  right: max(18px, env(safe-area-inset-right));
+  bottom: max(18px, env(safe-area-inset-bottom));
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 80;
+  background: #25d366;
+  color: #ffffff;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18);
+  transition: transform 160ms ease, box-shadow 160ms ease, background-color 160ms ease;
+}
+
+.whatsappFab svg {
+  width: 22px;
+  height: 22px;
+  display: block;
+}
+
+.whatsappFab:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 34px rgba(0, 0, 0, 0.22);
+  background: color-mix(in srgb, #25d366, #000000 7%);
+}
+
+.whatsappFab:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.25), 0 18px 34px rgba(0, 0, 0, 0.22);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .whatsappFab {
+    transition: none;
+  }
+}
