@@ -764,6 +764,42 @@ h1 {
   justify-content: flex-end;
 }
 
+.about__media--branded {
+  position: relative;
+}
+
+.mediaBrand {
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  pointer-events: none;
+}
+
+.mediaBrand__bar {
+  width: 88px;
+  height: 12px;
+  background: var(--color-primary);
+}
+
+.mediaBrand__logo {
+  height: 14px;
+  width: auto;
+  display: block;
+  object-fit: contain;
+  /* For dark-on-light images, keep it subtle and consistent */
+  filter: saturate(0) brightness(0.25);
+  opacity: 0.9;
+}
+
+.section--about .mediaBrand {
+  top: 18px;
+  left: 18px;
+}
+
 .about__media img {
   width: min(640px, 100%);
   aspect-ratio: 1 / 1;
@@ -1931,6 +1967,11 @@ h3 {
   .section--about .about__media {
     order: -1;
     min-height: 240px;
+  }
+
+  .section--about .mediaBrand {
+    top: 14px;
+    left: 14px;
   }
 
   .section--about .about__copy {
