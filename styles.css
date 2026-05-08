@@ -785,42 +785,6 @@ h1 {
   justify-content: flex-end;
 }
 
-.about__media--branded {
-  position: relative;
-}
-
-.mediaBrand {
-  position: absolute;
-  left: 16px;
-  bottom: 16px;
-  z-index: 2;
-  display: inline-flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 12px;
-  pointer-events: none;
-}
-
-.mediaBrand__bar {
-  width: 88px;
-  height: 12px;
-  background: var(--color-primary);
-}
-
-.mediaBrand__icon {
-  height: 22px;
-  width: auto;
-  display: block;
-  object-fit: contain;
-  color: var(--color-primary);
-  opacity: 0.95;
-}
-
-.section--about .mediaBrand {
-  left: 18px;
-  bottom: 18px;
-}
-
 .about__media img {
   width: min(640px, 100%);
   aspect-ratio: 1 / 1;
@@ -1988,11 +1952,6 @@ h3 {
   .section--about .about__media {
     order: -1;
     min-height: 240px;
-  }
-
-  .section--about .mediaBrand {
-    left: 14px;
-    bottom: 14px;
   }
 
   .section--about .about__copy {
