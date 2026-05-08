@@ -209,6 +209,49 @@ function initCatalogCarousels() {
 
 initCatalogCarousels();
 
+function initFloatingRects() {
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+  if (reduceMotion) return;
+
+  const rects = Array.from(document.querySelectorAll("[data-float-rect]"));
+  if (!rects.length) return;
+
+  let raf = 0;
+
+  function clamp(v, min, max) {
+    return Math.min(max, Math.max(min, v));
+  }
+
+  function update() {
+    raf = 0;
+    const vh = window.innerHeight || 1;
+    const center = vh * 0.5;
+
+    rects.forEach((el) => {
+      const host = el.parentElement;
+      if (!host) return;
+      const r = host.getBoundingClientRect();
+      const hostCenter = r.top + r.height * 0.5;
+      const t = (hostCenter - center) / vh; // ~ -0.5..0.5 around viewport center
+      const y = clamp(t * 10, -6, 6); // very subtle drift
+      el.style.setProperty("--float-y", `${y.toFixed(2)}px`);
+    });
+  }
+
+  function requestUpdate() {
+    if (raf) return;
+    raf = window.requestAnimationFrame(update);
+  }
+
+  update();
+  window.addEventListener("scroll", requestUpdate, { passive: true });
+  window.addEventListener("resize", requestUpdate, { passive: true });
+}
+
+initFloatingRects();
+
 function initModal(key) {
   const modal = document.getElementById(`${key}Modal`);
   if (!modal) return;
