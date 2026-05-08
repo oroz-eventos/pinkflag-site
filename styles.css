@@ -2022,7 +2022,7 @@ h3 {
 }
 
 .whatsappFab:hover {
-  transform: translateY(-1px);
+  transform: translateY(-10px);
   box-shadow: 0 26px 44px rgba(0, 0, 0, 0.26);
   background: color-mix(in srgb, #25d366, #000000 18%);
 }
@@ -2034,6 +2034,7 @@ h3 {
 
 .whatsappFab:focus-visible {
   outline: none;
+  transform: translateY(-10px);
   box-shadow: 0 0 0 3px rgba(37, 211, 102, 0.25), 0 26px 44px rgba(0, 0, 0, 0.26);
 }
 
