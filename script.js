@@ -252,6 +252,55 @@ function initFloatingRects() {
 
 initFloatingRects();
 
+/**
+ * Seção conceito: parallax com mola no frame (~±100px).
+ */
+function initConceptSection() {
+  const media = document.querySelector("[data-concept-media]");
+  const frame = document.querySelector("[data-concept-frame]");
+  const stage = document.querySelector("[data-concept-stage]");
+  if (!media || !frame || !stage) return;
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches;
+
+  if (reduceMotion) return;
+
+  const stiffness = 100;
+  const damping = 30;
+  let py = 0;
+  let vy = 0;
+  let lastT = performance.now();
+
+  function getScrollT() {
+    const rect = frame.getBoundingClientRect();
+    const vh = window.innerHeight || 1;
+    const span = Math.max(rect.height, vh * 0.5);
+    const center = rect.top + rect.height * 0.5;
+    const mid = vh * 0.5;
+    return Math.max(-1, Math.min(1, (center - mid) / span));
+  }
+
+  function conceptMotionFrame(now) {
+    const tMs = now;
+    const dt = Math.min(0.05, Math.max(0.001, (tMs - lastT) / 1000));
+    lastT = tMs;
+
+    const scrollT = getScrollT();
+    const parallaxTarget = -scrollT * 100;
+    const ay = stiffness * (parallaxTarget - py) - damping * vy;
+    vy += ay * dt;
+    py += vy * dt;
+    frame.style.transform = `translate3d(0, ${py.toFixed(2)}px, 0)`;
+
+    requestAnimationFrame(conceptMotionFrame);
+  }
+
+  requestAnimationFrame(conceptMotionFrame);
+}
+
+initConceptSection();
+
 function initModal(key) {
   const modal = document.getElementById(`${key}Modal`);
   if (!modal) return;
@@ -332,3 +381,259 @@ function initModal(key) {
 }
 
 initModal("contato");
+
+/** Sanfona “Nossos produtos”: max-height com transição sempre visível (reset de transition + reflow). */
+function initProductAccordionMotion() {
+  const nav = document.querySelector("#nossos-produtos .productAccordion");
+  if (!nav) return;
+
+  const reduceMotion =
+    typeof window !== "undefined" &&
+    Boolean(window.matchMedia?.("(prefers-reduced-motion: reduce)")?.matches);
+
+  const panels = Array.from(nav.querySelectorAll(".productAccordion__panel"));
+  const animState = new WeakMap();
+  const ANIM_MS = 820;
+
+  function getParts(detailEl) {
+    const body = detailEl.querySelector(".productAccordion__body");
+    const inner = detailEl.querySelector(".productAccordion__bodyInner");
+    return body && inner ? { body, inner } : null;
+  }
+
+  function openHeightPx(inner) {
+    return Math.min(inner.scrollHeight + 12, 2000);
+  }
+
+  function clearAnim(detailEl) {
+    const s = animState.get(detailEl);
+    if (!s) return;
+    window.clearTimeout(s.tid);
+    s.body?.removeEventListener("transitionend", s.onEnd);
+    animState.delete(detailEl);
+  }
+
+  /** Garante que o próximo max-height seja interpolado (evita “salto” quando o valor não muda). */
+  function flushTransitionNone(body, setupFn) {
+    body.style.transition = "none";
+    setupFn();
+    void body.offsetHeight;
+    body.style.removeProperty("transition");
+    void body.offsetHeight;
+  }
+
+  /** Fecha com transição de altura; no fim remove `open` e limpa inline. */
+  function runCloseAnimation(detailEl, done) {
+    const parts = getParts(detailEl);
+    if (!parts || !detailEl.open) {
+      done?.();
+      return;
+    }
+    const { body, inner } = parts;
+    clearAnim(detailEl);
+
+    if (reduceMotion) {
+      detailEl.removeAttribute("open");
+      body.style.maxHeight = "0px";
+      done?.();
+      return;
+    }
+
+    const hPx = `${openHeightPx(inner)}px`;
+    flushTransitionNone(body, () => {
+      body.style.maxHeight = hPx;
+    });
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        body.style.maxHeight = "0px";
+      });
+    });
+
+    let settled = false;
+    function finish() {
+      if (settled) return;
+      settled = true;
+      clearAnim(detailEl);
+      detailEl.removeAttribute("open");
+      body.style.removeProperty("max-height");
+      done?.();
+    }
+
+    function onEnd(te) {
+      if (te.target !== body || te.propertyName !== "max-height") return;
+      finish();
+    }
+
+    body.addEventListener("transitionend", onEnd);
+    const tid = window.setTimeout(finish, ANIM_MS);
+    animState.set(detailEl, { body, onEnd, tid });
+  }
+
+  /** Abre medindo altura; sempre reinicia de 0 com transição ligada. */
+  function runOpenAnimation(detailEl) {
+    const parts = getParts(detailEl);
+    if (!parts || !detailEl.open) return;
+    const { body, inner } = parts;
+
+    if (reduceMotion) {
+      body.style.maxHeight = `${openHeightPx(inner)}px`;
+      return;
+    }
+
+    const targetPx = `${openHeightPx(inner)}px`;
+    flushTransitionNone(body, () => {
+      body.style.maxHeight = "0px";
+    });
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => {
+        body.style.maxHeight = targetPx;
+      });
+    });
+  }
+
+  function syncOpenHeightsFromResize() {
+    panels.forEach((d) => {
+      if (!d.open) return;
+      const parts = getParts(d);
+      if (!parts) return;
+      parts.body.style.maxHeight = `${openHeightPx(parts.inner)}px`;
+    });
+  }
+
+  let resizeT = 0;
+  window.addEventListener(
+    "resize",
+    () => {
+      window.clearTimeout(resizeT);
+      resizeT = window.setTimeout(syncOpenHeightsFromResize, 120);
+    },
+    { passive: true },
+  );
+
+  panels.forEach((details) => {
+    const parts = getParts(details);
+    if (!parts) return;
+    const { body, inner } = parts;
+
+    details.addEventListener("toggle", () => {
+      if (!details.open) {
+        clearAnim(details);
+        body.style.removeProperty("max-height");
+        return;
+      }
+      panels.forEach((o) => {
+        if (o !== details && o.open) {
+          runCloseAnimation(o);
+        }
+      });
+      requestAnimationFrame(() => {
+        runOpenAnimation(details);
+      });
+    });
+
+    if (typeof ToggleEvent !== "undefined") {
+      details.addEventListener(
+        "beforetoggle",
+        (e) => {
+          if (!(e instanceof ToggleEvent)) return;
+          if (e.newState !== "closed" || e.oldState !== "open") return;
+          if (!e.cancelable) return;
+          if ("isTrusted" in e && e.isTrusted === false) return;
+          e.preventDefault();
+          runCloseAnimation(details);
+        },
+        { passive: false },
+      );
+    }
+
+    if (details.open) {
+      body.style.maxHeight = `${openHeightPx(inner)}px`;
+    } else {
+      body.style.maxHeight = "0px";
+    }
+  });
+}
+
+initProductAccordionMotion();
+
+function initProductShowcase() {
+  const root = document.querySelector("[data-product-showcase]");
+  if (!root) return;
+  const heroImg = root.querySelector(".productShowcase__img");
+  if (!(heroImg instanceof HTMLImageElement)) return;
+  const panels = Array.from(root.querySelectorAll("details[data-ph-label]"));
+  if (!panels.length) return;
+
+  const dw = root.getAttribute("data-art-dw") || "1920";
+  const dh = root.getAttribute("data-art-dh") || "1080";
+
+  function gcd(a, b) {
+    let x = Math.abs(Number.parseInt(String(a), 10) || 0);
+    let y = Math.abs(Number.parseInt(String(b), 10) || 0);
+    if (!x || !y) return 1;
+    while (y) {
+      const t = y;
+      y = x % y;
+      x = t;
+    }
+    return x;
+  }
+
+  function ratioLabel(w, h) {
+    const wi = Number.parseInt(String(w), 10);
+    const hi = Number.parseInt(String(h), 10);
+    if (!wi || !hi) return "—";
+    const g = gcd(wi, hi);
+    return `${wi / g}∶${hi / g}`;
+  }
+
+  /** Duas linhas no placeholder: tamanho recomendado (px) e proporção. */
+  function buildOverlayText(label) {
+    const r = ratioLabel(dw, dh);
+    return `${String(label || "").toUpperCase()}\n${dw}×${dh} px · ${r}`;
+  }
+
+  function placeholdUrl(w, h, bg, fg, text) {
+    return `https://placehold.co/${w}x${h}/${bg}/${fg}/png?text=${encodeURIComponent(text)}`;
+  }
+
+  function readPanelTheme(panel) {
+    const label = panel?.getAttribute("data-ph-label") || "Produto";
+    const bg = (panel?.getAttribute("data-ph-bg") || "f2f2f2").replace("#", "");
+    const fg = (panel?.getAttribute("data-ph-fg") || "1f0f16").replace("#", "");
+    return { label, bg, fg };
+  }
+
+  function setImageFromPanel(panel) {
+    const { label, bg, fg } = readPanelTheme(panel);
+    const overlay = buildOverlayText(label);
+    const dwNum = Number.parseInt(dw, 10) || 1920;
+    const dhNum = Number.parseInt(dh, 10) || 1080;
+    const src = placeholdUrl(dw, dh, bg, fg, overlay);
+    const r = ratioLabel(dw, dh);
+    const title = `${label} · ${dw}×${dh} px · ${r}`;
+    const panelImg = panel?.querySelector?.(".productAccordion__img");
+    heroImg.src = src;
+    heroImg.width = dwNum;
+    heroImg.height = dhNum;
+    heroImg.title = title;
+
+    if (panelImg instanceof HTMLImageElement) {
+      panelImg.src = src;
+      panelImg.width = dwNum;
+      panelImg.height = dhNum;
+      panelImg.title = title;
+    }
+  }
+
+  panels.forEach((panel) => {
+    panel.addEventListener("toggle", () => {
+      if (!panel.open) return;
+      setImageFromPanel(panel);
+    });
+  });
+
+  setImageFromPanel(panels.find((p) => p.open) || panels[0]);
+}
+
+initProductShowcase();

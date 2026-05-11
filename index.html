@@ -7,7 +7,7 @@
       name="description"
       content="Pink Flag — moda em uniformes. Coleções minimalistas para empresas e equipes."
     />
-    <title>Pink Flag — Uniformes</title>
+    <title>Pink Flag — Uniformes profissionais</title>
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -117,29 +117,50 @@
         </div>
       </section>
 
-      <section class="section concept" id="conceito" aria-label="Nosso Conceito">
+      <section class="section concept" id="conceito" aria-label="Conceito em vídeo">
         <div class="container concept__inner">
-          <div class="concept__head" data-reveal>
-            <h2 class="title1">Nosso Conceito</h2>
-            <ul class="conceptKeywords" aria-label="Palavras-chave do conceito">
-              <li><span class="conceptKeyword">Funcional</span></li>
-              <li><span class="conceptKeyword">Urbano</span></li>
-              <li><span class="conceptKeyword">Contemporâneo</span></li>
-              <li><span class="conceptKeyword">Personalizável</span></li>
-            </ul>
-          </div>
+          <figure
+            class="concept__media"
+            aria-label="Vídeo conceito"
+            data-reveal
+            data-concept-media
+          >
+            <div class="concept__frame" data-concept-frame>
+              <div class="conceptFrame conceptFrame--top" aria-label="Palavras-chave (topo)">
+                <div class="conceptFrame__item">
+                  <span class="conceptFrame__num" aria-hidden="true">01</span>
+                  <span class="conceptFrame__label">Urbano</span>
+                </div>
+                <div class="conceptFrame__item">
+                  <span class="conceptFrame__num" aria-hidden="true">02</span>
+                  <span class="conceptFrame__label">Contemporâneo</span>
+                </div>
+              </div>
 
-          <figure class="concept__media" aria-label="Vídeo conceito" data-reveal>
-            <video
-              class="concept__video"
-              src="./assets/video/conceito-0.mp4"
-              autoplay
-              muted
-              loop
-              playsinline
-              preload="metadata"
-              aria-hidden="true"
-            ></video>
+              <div class="concept__stage" data-concept-stage>
+                <video
+                  class="concept__video"
+                  src="./assets/video/conceito-0.mp4"
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-hidden="true"
+                ></video>
+              </div>
+
+              <div class="conceptFrame conceptFrame--bottom" aria-label="Palavras-chave (base)">
+                <div class="conceptFrame__item">
+                  <span class="conceptFrame__num" aria-hidden="true">03</span>
+                  <span class="conceptFrame__label">Personalizável</span>
+                </div>
+                <div class="conceptFrame__item">
+                  <span class="conceptFrame__num" aria-hidden="true">04</span>
+                  <span class="conceptFrame__label">Funcional</span>
+                </div>
+              </div>
+            </div>
           </figure>
         </div>
       </section>
@@ -357,6 +378,15 @@
                     </figure>
                     <figure class="catalogSlide">
                       <img src="./assets/images/linha_social-14.jpg" alt="" loading="lazy" decoding="async" />
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img src="./assets/images/linha_social-15.jpg" alt="" loading="lazy" decoding="async" />
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img src="./assets/images/linha_social-16.jpg" alt="" loading="lazy" decoding="async" />
+                    </figure>
+                    <figure class="catalogSlide">
+                      <img src="./assets/images/linha_social-17.jpg" alt="" loading="lazy" decoding="async" />
                     </figure>
                   </div>
                 </div>
@@ -650,148 +680,114 @@
         </div>
       </section>
 
-      <section class="section" id="nossos-produtos" aria-label="Nossos Produtos">
+      <section class="section section--products-split" id="nossos-produtos" aria-label="Nossos Produtos">
         <div class="container">
           <div class="section__head section__head--stack" data-reveal>
             <p class="eyebrow">Nossos Produtos</p>
             <h2 class="title1">Uniformes profissionais que traduzem posicionamento em produto.</h2>
           </div>
 
-          <div class="productCats" data-reveal>
-            <article class="productCat">
-              <header class="productCat__head">
-                <div class="productCat__titleRow">
-                  <img
-                    class="productCat__icon"
-                    src="./assets/icons/catalog/prod-uniformes.svg"
-                    alt=""
-                    width="22"
-                    height="22"
-                    loading="lazy"
-                    decoding="async"
-                    aria-hidden="true"
-                  />
-                  <h3 class="productCat__title">Uniformes</h3>
-                </div>
-              </header>
-              <ul class="productCat__list">
-                <li>Macacão e tricot</li>
-                <li>Couro</li>
-                <li>Blazer e calça italiana</li>
-                <li>Camisaria</li>
-                <li>Calça, saia e vestido</li>
-                <li>Polos e camisetas</li>
-                <li>Jaquetas e outerwear</li>
-                <li>Uniformes técnicos e operacionais</li>
-                <li>Beachwear</li>
-              </ul>
-            </article>
+          <div
+            class="productShowcase"
+            data-reveal
+            data-product-showcase
+            data-art-dw="1920"
+            data-art-dh="1080"
+          >
+            <aside class="productShowcase__sidebar">
+              <nav class="productAccordion" aria-label="Categorias de produtos">
+                <details
+                  class="productAccordion__panel"
+                  data-ph-label="Uniformes"
+                  data-ph-bg="1f0f16"
+                  data-ph-fg="f2f2f2"
+                  open
+                >
+                  <summary class="productAccordion__summary"><span class="productAccordion__label">Uniformes</span></summary>
+                  <div class="productAccordion__body">
+                    <div class="productAccordion__bodyInner">
+                      <figure class="productAccordion__media" aria-hidden="true">
+                        <img class="productAccordion__img" alt="" decoding="async" loading="lazy" />
+                      </figure>
+                      <p class="productAccordion__desc">
+                        Alfaiataria contemporânea, camisaria, malharia, tricô, peças técnicas e operações especiais.
+                      </p>
+                    </div>
+                  </div>
+                </details>
 
-            <article class="productCat">
-              <header class="productCat__head">
-                <div class="productCat__titleRow">
-                  <img
-                    class="productCat__icon"
-                    src="./assets/icons/catalog/prod-bolsas.svg"
-                    alt=""
-                    width="22"
-                    height="22"
-                    loading="lazy"
-                    decoding="async"
-                    aria-hidden="true"
-                  />
-                  <h3 class="productCat__title">Bolsas</h3>
-                </div>
-              </header>
-              <ul class="productCat__list">
-                <li>Mochilas</li>
-                <li>Pochetes</li>
-                <li>Clutchs / bags</li>
-                <li>Bolsa de academia</li>
-                <li>Bolsa térmica</li>
-                <li>Lancheiras</li>
-                <li>Necessaire</li>
-                <li>Case para mala</li>
-                <li>Case para boné</li>
-              </ul>
-            </article>
+                <details
+                  class="productAccordion__panel"
+                  data-ph-label="Acessórios"
+                  data-ph-bg="1f3a5f"
+                  data-ph-fg="f2f2f2"
+                >
+                  <summary class="productAccordion__summary"><span class="productAccordion__label">Acessórios</span></summary>
+                  <div class="productAccordion__body">
+                    <div class="productAccordion__bodyInner">
+                      <figure class="productAccordion__media" aria-hidden="true">
+                        <img class="productAccordion__img" alt="" decoding="async" loading="lazy" />
+                      </figure>
+                      <p class="productAccordion__desc">
+                        Bolsas, nécessaires, meias e itens desenvolvidos para ampliar a experiência da marca.
+                      </p>
+                    </div>
+                  </div>
+                </details>
 
-            <article class="productCat">
-              <header class="productCat__head">
-                <div class="productCat__titleRow">
-                  <img
-                    class="productCat__icon"
-                    src="./assets/icons/catalog/prod-meias.svg"
-                    alt=""
-                    width="22"
-                    height="22"
-                    loading="lazy"
-                    decoding="async"
-                    aria-hidden="true"
-                  />
-                  <h3 class="productCat__title">Meias</h3>
-                </div>
-              </header>
-              <ul class="productCat__list">
-                <li>Atoalhada / fio / poliéster</li>
-                <li>Soquete</li>
-                <li>Esportiva</li>
-                <li>Casual</li>
-                <li>Infantil</li>
-              </ul>
-            </article>
+                <details
+                  class="productAccordion__panel"
+                  data-ph-label="Performance"
+                  data-ph-bg="0f3d2e"
+                  data-ph-fg="f2f2f2"
+                >
+                  <summary class="productAccordion__summary"><span class="productAccordion__label">Performance</span></summary>
+                  <div class="productAccordion__body">
+                    <div class="productAccordion__bodyInner">
+                      <figure class="productAccordion__media" aria-hidden="true">
+                        <img class="productAccordion__img" alt="" decoding="async" loading="lazy" />
+                      </figure>
+                      <p class="productAccordion__desc">
+                        EPIs, peças técnicas, calçados especiais e soluções operacionais com integração estética.
+                      </p>
+                    </div>
+                  </div>
+                </details>
 
-            <article class="productCat">
-              <header class="productCat__head">
-                <div class="productCat__titleRow">
-                  <img
-                    class="productCat__icon"
-                    src="./assets/icons/catalog/prod-epis.svg"
-                    alt=""
-                    width="22"
-                    height="22"
-                    loading="lazy"
-                    decoding="async"
-                    aria-hidden="true"
-                  />
-                  <h3 class="productCat__title">EPIs</h3>
-                </div>
-              </header>
-              <ul class="productCat__list">
-                <li>Calçados</li>
-                <li>Colete</li>
-                <li>Capacete</li>
-                <li>Luvas</li>
-                <li>Botas</li>
-                <li>Sapatos</li>
-              </ul>
-            </article>
+                <details
+                  class="productAccordion__panel"
+                  data-ph-label="Headwear"
+                  data-ph-bg="5c1f3a"
+                  data-ph-fg="f2f2f2"
+                >
+                  <summary class="productAccordion__summary"><span class="productAccordion__label">Headwear</span></summary>
+                  <div class="productAccordion__body">
+                    <div class="productAccordion__bodyInner">
+                      <figure class="productAccordion__media" aria-hidden="true">
+                        <img class="productAccordion__img" alt="" decoding="async" loading="lazy" />
+                      </figure>
+                      <p class="productAccordion__desc">
+                        Bonés e acessórios desenvolvidos em alinhamento com a identidade visual da operação.
+                      </p>
+                    </div>
+                  </div>
+                </details>
+              </nav>
+            </aside>
 
-            <article class="productCat">
-              <header class="productCat__head">
-                <div class="productCat__titleRow">
-                  <img
-                    class="productCat__icon"
-                    src="./assets/icons/catalog/prod-chapeus.svg"
-                    alt=""
-                    width="22"
-                    height="22"
-                    loading="lazy"
-                    decoding="async"
-                    aria-hidden="true"
-                  />
-                  <h3 class="productCat__title">Chapéus</h3>
-                </div>
-              </header>
-              <ul class="productCat__list">
-                <li>Boné dad hat</li>
-                <li>Boné 6 gomos</li>
-                <li>Boné esportivo</li>
-                <li>Boné trucker</li>
-                <li>Viseira</li>
-                <li>Bucket hat</li>
-              </ul>
-            </article>
+            <div class="productShowcase__visual">
+              <figure class="productShowcase__figure">
+                <img
+                  class="productShowcase__img"
+                  src="https://placehold.co/1920x1080/f2f2f2/1f0f16/png?text=1920%C3%971080%20px%0A16%E2%88%B69"
+                  width="1920"
+                  height="1080"
+                  alt=""
+                  decoding="async"
+                  title="1920×1080 px · 16∶9"
+                />
+              </figure>
+            </div>
           </div>
         </div>
       </section>
