@@ -561,68 +561,27 @@ function initProductShowcase() {
   if (!root) return;
   const heroImg = root.querySelector(".productShowcase__img");
   if (!(heroImg instanceof HTMLImageElement)) return;
-  const panels = Array.from(root.querySelectorAll("details[data-ph-label]"));
+  const panels = Array.from(root.querySelectorAll("details[data-product-src]"));
   if (!panels.length) return;
 
-  const dw = root.getAttribute("data-art-dw") || "1920";
-  const dh = root.getAttribute("data-art-dh") || "1080";
-
-  function gcd(a, b) {
-    let x = Math.abs(Number.parseInt(String(a), 10) || 0);
-    let y = Math.abs(Number.parseInt(String(b), 10) || 0);
-    if (!x || !y) return 1;
-    while (y) {
-      const t = y;
-      y = x % y;
-      x = t;
-    }
-    return x;
-  }
-
-  function ratioLabel(w, h) {
-    const wi = Number.parseInt(String(w), 10);
-    const hi = Number.parseInt(String(h), 10);
-    if (!wi || !hi) return "—";
-    const g = gcd(wi, hi);
-    return `${wi / g}∶${hi / g}`;
-  }
-
-  /** Duas linhas no placeholder: tamanho recomendado (px) e proporção. */
-  function buildOverlayText(label) {
-    const r = ratioLabel(dw, dh);
-    return `${String(label || "").toUpperCase()}\n${dw}×${dh} px · ${r}`;
-  }
-
-  function placeholdUrl(w, h, bg, fg, text) {
-    return `https://placehold.co/${w}x${h}/${bg}/${fg}/png?text=${encodeURIComponent(text)}`;
-  }
-
-  function readPanelTheme(panel) {
-    const label = panel?.getAttribute("data-ph-label") || "Produto";
-    const bg = (panel?.getAttribute("data-ph-bg") || "f2f2f2").replace("#", "");
-    const fg = (panel?.getAttribute("data-ph-fg") || "1f0f16").replace("#", "");
-    return { label, bg, fg };
-  }
-
   function setImageFromPanel(panel) {
-    const { label, bg, fg } = readPanelTheme(panel);
-    const overlay = buildOverlayText(label);
-    const dwNum = Number.parseInt(dw, 10) || 1920;
-    const dhNum = Number.parseInt(dh, 10) || 1080;
-    const src = placeholdUrl(dw, dh, bg, fg, overlay);
-    const r = ratioLabel(dw, dh);
-    const title = `${label} · ${dw}×${dh} px · ${r}`;
-    const panelImg = panel?.querySelector?.(".productAccordion__img");
-    heroImg.src = src;
-    heroImg.width = dwNum;
-    heroImg.height = dhNum;
-    heroImg.title = title;
+    const src = panel.getAttribute("data-product-src");
+    if (!src) return;
+    const panelImg = panel.querySelector(".productAccordion__img");
+    const alt =
+      panelImg instanceof HTMLImageElement && panelImg.alt
+        ? panelImg.alt
+        : panel.getAttribute("data-ph-label") || "";
 
+    heroImg.src = src;
+    heroImg.alt = alt;
+    heroImg.removeAttribute("title");
     if (panelImg instanceof HTMLImageElement) {
-      panelImg.src = src;
-      panelImg.width = dwNum;
-      panelImg.height = dhNum;
-      panelImg.title = title;
+      heroImg.width = panelImg.width;
+      heroImg.height = panelImg.height;
+    } else {
+      heroImg.removeAttribute("width");
+      heroImg.removeAttribute("height");
     }
   }
 
