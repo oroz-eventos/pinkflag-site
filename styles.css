@@ -1595,21 +1595,24 @@ h3.title2,
 
 /* Nossos Produtos — sidebar + imagem hero (referência) */
 .productShowcase {
-  --bleed-right: max(0px, calc((var(--vw) - 100%) / 2));
+  --showcase-gap: clamp(24px, 4vw, 48px);
+  --img-span: 100%;
   display: grid;
-  grid-template-columns: minmax(260px, 30%) minmax(0, 1fr);
-  align-items: stretch;
-  column-gap: 0;
-  min-height: clamp(520px, min(65vh, 720px), 780px);
+  grid-template-columns: minmax(260px, 30%) minmax(0, auto);
+  align-items: start;
+  column-gap: var(--showcase-gap);
+  min-height: 0;
   margin-top: 48px;
   background: transparent;
-  border: 1px solid rgba(31, 15, 22, 0.11);
+  border: 0;
+  overflow: visible;
 }
 
 .productShowcase__sidebar {
   --accordion-pad-x: clamp(20px, 3.2vw, 36px);
-  padding: clamp(32px, 4.5vw, 56px) var(--accordion-pad-x) clamp(36px, 5vw, 60px);
-  border-right: 1px solid rgba(31, 15, 22, 0.09);
+  align-self: start;
+  padding: 0 0 clamp(36px, 5vw, 60px);
+  border: 0;
   background: transparent;
 }
 
@@ -1618,9 +1621,8 @@ h3.title2,
   flex-direction: column;
 }
 
-/* Linhas só entre opções; topo/base vêm do outline de .productShowcase */
 .productAccordion__panel + .productAccordion__panel {
-  border-top: 1px solid rgba(31, 15, 22, 0.12);
+  border-top: 0;
 }
 
 .productAccordion__summary {
@@ -1779,30 +1781,26 @@ h3.title2,
 
 .productShowcase__visual {
   position: relative;
-  min-width: 0;
-  min-height: 100%;
-  align-self: stretch;
+  width: var(--img-span);
+  min-width: var(--img-span);
+  max-width: var(--img-span);
+  flex-shrink: 0;
+  align-self: start;
   overflow: visible;
   background: transparent;
 }
 
 .productShowcase__figure {
   margin: 0;
-  position: absolute;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: calc(-1 * var(--bleed-right));
-  overflow: hidden;
+  width: 100%;
+  overflow: visible;
   background: transparent;
 }
 
 .productShowcase__img {
   display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center center;
+  height: auto;
 }
 
 /* “Nossos Produtos”: respiro editorial */
@@ -1817,6 +1815,14 @@ h3.title2,
 
 .section--products-split {
   overflow-x: clip;
+}
+
+#nossos-produtos.section--products-split {
+  overflow-x: visible;
+}
+
+#nossos-produtos .container {
+  overflow: visible;
 }
 
 .whatCard,

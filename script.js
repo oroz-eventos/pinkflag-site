@@ -556,6 +556,21 @@ function initProductAccordionMotion() {
 
 initProductAccordionMotion();
 
+/** Largura da foto: da coluna visual até a borda direita da viewport (proporção preservada). */
+function syncProductShowcaseBleed(root) {
+  const visual = root.querySelector(".productShowcase__visual");
+  if (!visual) return;
+
+  if (window.matchMedia("(max-width: 900px)").matches) {
+    root.style.removeProperty("--img-span");
+    return;
+  }
+
+  const left = visual.getBoundingClientRect().left;
+  const span = Math.max(0, document.documentElement.clientWidth - left);
+  root.style.setProperty("--img-span", `${Math.round(span)}px`);
+}
+
 function initProductShowcase() {
   const root = document.querySelector("[data-product-showcase]");
   if (!root) return;
@@ -563,6 +578,19 @@ function initProductShowcase() {
   if (!(heroImg instanceof HTMLImageElement)) return;
   const panels = Array.from(root.querySelectorAll("details[data-product-src]"));
   if (!panels.length) return;
+
+  const mqDesktop = window.matchMedia("(min-width: 901px)");
+  const scheduleBleed = () => requestAnimationFrame(() => syncProductShowcaseBleed(root));
+
+  scheduleBleed();
+  window.addEventListener("resize", scheduleBleed, { passive: true });
+  mqDesktop.addEventListener("change", scheduleBleed);
+  if (typeof ResizeObserver !== "undefined") {
+    const ro = new ResizeObserver(scheduleBleed);
+    ro.observe(root);
+    const container = root.closest(".container");
+    if (container) ro.observe(container);
+  }
 
   function setImageFromPanel(panel) {
     const src = panel.getAttribute("data-product-src");
@@ -589,10 +617,13 @@ function initProductShowcase() {
     panel.addEventListener("toggle", () => {
       if (!panel.open) return;
       setImageFromPanel(panel);
+      scheduleBleed();
     });
   });
 
   setImageFromPanel(panels.find((p) => p.open) || panels[0]);
+  if (heroImg.complete) scheduleBleed();
+  else heroImg.addEventListener("load", scheduleBleed, { once: true });
 }
 
 initProductShowcase();
