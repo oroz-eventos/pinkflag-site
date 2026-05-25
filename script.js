@@ -382,6 +382,93 @@ function initModal(key) {
 
 initModal("contato");
 
+function initContactForm() {
+  const form = document.getElementById("contatoForm");
+  const statusEl = document.getElementById("contatoFormStatus");
+  if (!(form instanceof HTMLFormElement) || !(statusEl instanceof HTMLElement)) return;
+
+  const submitButton = form.querySelector('button[type="submit"]');
+  let closeTimer = 0;
+
+  function showStatus(message, { isError = false } = {}) {
+    statusEl.textContent = message;
+    statusEl.hidden = false;
+    statusEl.classList.toggle("is-error", isError);
+    statusEl.classList.toggle("is-success", !isError);
+  }
+
+  function clearStatus() {
+    window.clearTimeout(closeTimer);
+    statusEl.hidden = true;
+    statusEl.textContent = "";
+    statusEl.classList.remove("is-error", "is-success");
+  }
+
+  function setSubmitting(isSubmitting) {
+    if (!(submitButton instanceof HTMLButtonElement)) return;
+    submitButton.disabled = isSubmitting;
+    const label = submitButton.querySelector(".button__label");
+    if (label) label.textContent = isSubmitting ? "Enviando..." : "Enviar mensagem";
+  }
+
+  const url = new URL(window.location.href);
+  const formStatus = url.searchParams.get("form_status");
+  const formMessage = url.searchParams.get("form_message");
+  if (formStatus && formMessage) {
+    document.querySelector('[data-modal-open="contato"]')?.click();
+    showStatus(formMessage, { isError: formStatus !== "success" });
+    url.searchParams.delete("form_status");
+    url.searchParams.delete("form_message");
+    window.history.replaceState({}, document.title, `${url.pathname}${url.search}${url.hash}`);
+  }
+
+  form.addEventListener("input", () => {
+    if (!statusEl.hidden) clearStatus();
+  });
+
+  if (typeof window.fetch !== "function") return;
+
+  form.addEventListener("submit", async (event) => {
+    event.preventDefault();
+    clearStatus();
+
+    if (!form.reportValidity()) return;
+
+    setSubmitting(true);
+
+    try {
+      const response = await fetch(form.action, {
+        method: "POST",
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      const payload = await response.json().catch(() => null);
+      if (!response.ok || !payload?.ok) {
+        throw new Error(payload?.message || "Nao foi possivel enviar sua mensagem agora.");
+      }
+
+      form.reset();
+      showStatus(payload.message || "Mensagem enviada com sucesso.");
+
+      closeTimer = window.setTimeout(() => {
+        document.querySelector('[data-modal-close="contato"]')?.click();
+        clearStatus();
+      }, 2200);
+    } catch (error) {
+      showStatus(error instanceof Error ? error.message : "Nao foi possivel enviar sua mensagem agora.", {
+        isError: true,
+      });
+    } finally {
+      setSubmitting(false);
+    }
+  });
+}
+
+initContactForm();
+
 /** Sanfona “Nossos produtos”: max-height com transição sempre visível (reset de transition + reflow). */
 function initProductAccordionMotion() {
   const nav = document.querySelector("#nossos-produtos .productAccordion");

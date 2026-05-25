@@ -1271,6 +1271,15 @@ h3.title2,
   align-content: start;
 }
 
+.contactForm__honeypot {
+  position: absolute;
+  left: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
+}
+
 .field {
   display: grid;
   gap: 8px;
@@ -1312,10 +1321,29 @@ h3.title2,
   border-bottom-color: rgba(180, 60, 100, 0.65);
 }
 
+.contactForm__status {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.contactForm__status.is-success {
+  color: #20603b;
+}
+
+.contactForm__status.is-error {
+  color: #9f2748;
+}
+
 .modal__actions {
   margin-top: 12px;
   display: flex;
   justify-content: flex-end;
+}
+
+.modal__actions .button[disabled] {
+  opacity: 0.7;
+  cursor: wait;
 }
 
 @media (max-height: 720px) {
