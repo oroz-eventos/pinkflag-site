@@ -94,9 +94,25 @@ $headers = implode("\r\n", [
     'Reply-To: ' . $email,
 ]);
 
-$sent = @mail(CONTACT_RECIPIENT, $subject, $body, $headers);
+ini_set('sendmail_from', CONTACT_SENDER);
+
+$mailParams = '-f' . CONTACT_SENDER;
+$sent = @mail(CONTACT_RECIPIENT, $subject, $body, $headers, $mailParams);
 
 if (!$sent) {
+    $lastError = error_get_last();
+    error_log(
+        'Pink Flag send.php mail() failed: '
+        . json_encode(
+            [
+                'to' => CONTACT_RECIPIENT,
+                'from' => CONTACT_SENDER,
+                'reply_to' => $email,
+                'error' => $lastError,
+            ],
+            JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE
+        )
+    );
     respond(false, 'Nao foi possivel enviar sua mensagem agora. Tente novamente em alguns minutos.', 500);
 }
 
