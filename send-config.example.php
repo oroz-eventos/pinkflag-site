@@ -3,14 +3,14 @@
 declare(strict_types=1);
 
 return [
-    'recipient' => 'gabriel@oroz.com.br',
-    'sender_email' => 'onboarding@resend.dev',
+    'recipient' => 'alexandre@pinkflag.com.br',
+    'sender_email' => 'alexandre@pinkflag.com.br',
     'sender_name' => 'Pink Flag Site',
     'smtp' => [
-        'host' => 'smtp.resend.com',
+        'host' => 'smtp.mailserverpro.com.br',
         'port' => 587,
         'security' => 'tls',
-        'username' => 'resend',
+        'username' => 'alexande@pinkflag.com.br',
         'password' => 'replace-with-your-smtp-password',
         'timeout' => 15,
     ],
