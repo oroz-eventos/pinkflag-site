@@ -140,6 +140,82 @@ function smtp_connect(array $smtp)
     return $socket;
 }
 
+function smtp_initialize_session($socket, string $hostname, string $security): void
+{
+    smtp_command($socket, 'EHLO ' . $hostname, [250]);
+
+    if ($security === 'tls' || $security === 'starttls') {
+        smtp_command($socket, 'STARTTLS', [220]);
+
+        $cryptoEnabled = @stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
+        if ($cryptoEnabled !== true) {
+            throw new RuntimeException('Nao foi possivel iniciar TLS com o servidor SMTP.');
+        }
+
+        smtp_command($socket, 'EHLO ' . $hostname, [250]);
+    }
+}
+
+function smtp_authenticate_login($socket, string $username, string $password): void
+{
+    smtp_command($socket, 'AUTH LOGIN', [334]);
+    smtp_command($socket, base64_encode($username), [334]);
+    smtp_command($socket, base64_encode($password), [235]);
+}
+
+function smtp_authenticate_plain($socket, string $username, string $password): void
+{
+    $payload = base64_encode("\0" . $username . "\0" . $password);
+    smtp_command($socket, 'AUTH PLAIN ' . $payload, [235]);
+}
+
+function smtp_send_data($socket, string $senderEmail, string $senderName, string $recipient, string $replyTo, string $subject, string $body, string $hostname): void
+{
+    smtp_command($socket, 'MAIL FROM:<' . $senderEmail . '>', [250]);
+    smtp_command($socket, 'RCPT TO:<' . $recipient . '>', [250, 251]);
+    smtp_command($socket, 'DATA', [354]);
+
+    $headers = [
+        'Date: ' . date(DATE_RFC2822),
+        'Message-ID: <' . bin2hex(random_bytes(16)) . '@' . preg_replace('/[^a-z0-9.-]+/i', '', $hostname) . '>',
+        'From: ' . $senderName . ' <' . $senderEmail . '>',
+        'To: ' . $recipient,
+        'Reply-To: ' . $replyTo,
+        'Subject: ' . $subject,
+        'MIME-Version: 1.0',
+        'Content-Type: text/plain; charset=UTF-8',
+        'Content-Transfer-Encoding: 8bit',
+    ];
+
+    $data = implode("\r\n", $headers) . "\r\n\r\n" . $body;
+    $data = str_replace(["\r\n", "\r"], "\n", $data);
+    $data = preg_replace('/^\./m', '..', $data) ?? $data;
+    $data = str_replace("\n", "\r\n", $data);
+
+    fwrite($socket, $data . "\r\n.\r\n");
+    smtp_command($socket, '', [250]);
+}
+
+function smtp_attempt_delivery(array $smtp, string $security, string $username, string $password, string $senderEmail, string $senderName, string $recipient, string $replyTo, string $subject, string $body, string $hostname, string $authMethod): void
+{
+    $socket = smtp_connect($smtp);
+
+    try {
+        smtp_initialize_session($socket, $hostname, $security);
+
+        if ($authMethod === 'plain') {
+            smtp_authenticate_plain($socket, $username, $password);
+        } else {
+            smtp_authenticate_login($socket, $username, $password);
+        }
+
+        smtp_send_data($socket, $senderEmail, $senderName, $recipient, $replyTo, $subject, $body, $hostname);
+        smtp_command($socket, 'QUIT', [221]);
+    } finally {
+        fclose($socket);
+    }
+}
+
 function smtp_send_message(array $config, string $replyTo, string $subject, string $body): void
 {
     $smtp = $config['smtp'] ?? null;
@@ -166,53 +242,37 @@ function smtp_send_message(array $config, string $replyTo, string $subject, stri
         throw new RuntimeException('Usuario ou senha SMTP ausentes.');
     }
 
-    $socket = smtp_connect($smtp);
     $hostname = $_SERVER['SERVER_NAME'] ?? 'localhost';
-
-    try {
-        smtp_command($socket, 'EHLO ' . $hostname, [250]);
-
-        if ($security === 'tls' || $security === 'starttls') {
-            smtp_command($socket, 'STARTTLS', [220]);
-
-            $cryptoEnabled = @stream_socket_enable_crypto($socket, true, STREAM_CRYPTO_METHOD_TLS_CLIENT);
-            if ($cryptoEnabled !== true) {
-                throw new RuntimeException('Nao foi possivel iniciar TLS com o servidor SMTP.');
-            }
-
-            smtp_command($socket, 'EHLO ' . $hostname, [250]);
-        }
-
-        smtp_command($socket, 'AUTH LOGIN', [334]);
-        smtp_command($socket, base64_encode($username), [334]);
-        smtp_command($socket, base64_encode($password), [235]);
-        smtp_command($socket, 'MAIL FROM:<' . $senderEmail . '>', [250]);
-        smtp_command($socket, 'RCPT TO:<' . $recipient . '>', [250, 251]);
-        smtp_command($socket, 'DATA', [354]);
-
-        $headers = [
-            'Date: ' . date(DATE_RFC2822),
-            'Message-ID: <' . bin2hex(random_bytes(16)) . '@' . preg_replace('/[^a-z0-9.-]+/i', '', $hostname) . '>',
-            'From: ' . $senderName . ' <' . $senderEmail . '>',
-            'To: ' . $recipient,
-            'Reply-To: ' . $replyTo,
-            'Subject: ' . $subject,
-            'MIME-Version: 1.0',
-            'Content-Type: text/plain; charset=UTF-8',
-            'Content-Transfer-Encoding: 8bit',
-        ];
-
-        $data = implode("\r\n", $headers) . "\r\n\r\n" . $body;
-        $data = str_replace(["\r\n", "\r"], "\n", $data);
-        $data = preg_replace('/^\./m', '..', $data) ?? $data;
-        $data = str_replace("\n", "\r\n", $data);
-
-        fwrite($socket, $data . "\r\n.\r\n");
-        smtp_command($socket, '', [250]);
-        smtp_command($socket, 'QUIT', [221]);
-    } finally {
-        fclose($socket);
+    $authMethods = $smtp['auth_methods'] ?? ['login', 'plain'];
+    if (!is_array($authMethods) || $authMethods === []) {
+        $authMethods = ['login', 'plain'];
     }
+
+    $lastException = null;
+
+    foreach ($authMethods as $authMethod) {
+        try {
+            smtp_attempt_delivery(
+                $smtp,
+                $security,
+                $username,
+                $password,
+                $senderEmail,
+                $senderName,
+                $recipient,
+                $replyTo,
+                $subject,
+                $body,
+                $hostname,
+                strtolower((string) $authMethod)
+            );
+            return;
+        } catch (Throwable $exception) {
+            $lastException = $exception;
+        }
+    }
+
+    throw $lastException ?? new RuntimeException('Falha ao autenticar no servidor SMTP.');
 }
 
 if (($_SERVER['REQUEST_METHOD'] ?? 'GET') !== 'POST') {

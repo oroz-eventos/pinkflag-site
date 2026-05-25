@@ -9,9 +9,10 @@ return [
     'smtp' => [
         'host' => 'smtp.mailserverpro.com.br',
         'port' => 587,
-        'security' => 'tls',
-        'username' => 'alexande@pinkflag.com.br',
+        'security' => 'none',
+        'username' => 'alexandre@pinkflag.com.br',
         'password' => 'replace-with-your-smtp-password',
         'timeout' => 15,
+        'auth_methods' => ['login', 'plain'],
     ],
 ];
