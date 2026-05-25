@@ -5,6 +5,7 @@
 # optional local-only files
 .env
 .env.*
+send-config.php
 
 # common build caches (in case you add tooling later)
 node_modules/
